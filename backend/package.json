@@ -1,0 +1,48 @@
+{
+  "name": "adasi-crm-backend",
+  "version": "1.0.0",
+  "description": "Backend do sistema Adasi CRM",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "build": "tsc",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/nodemailer": "^6.4.4",
+    "@types/uuid": "^8.3.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.6.3",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.37",
+    "typeorm-naming-strategies": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
