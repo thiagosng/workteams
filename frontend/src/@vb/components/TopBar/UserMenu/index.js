@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { UserOutlined } from '@ant-design/icons'
@@ -14,6 +15,13 @@ const ProfileMenu = ({ dispatch, user }) => {
       type: 'user/LOGOUT',
     })
   }
+  const history = useHistory()
+
+  const editProfile = (e) => {
+    e.preventDefault()
+    history.push('/users')
+  }
+
   console.log(user)
   const menu = (
     <Menu selectable={false}>
@@ -33,7 +41,7 @@ const ProfileMenu = ({ dispatch, user }) => {
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item>
-        <a href="#" onClick={(e) => e.preventDefault()}>
+        <a href="#" onClick={editProfile}>
           <i className="fe fe-user mr-2" />
           <FormattedMessage id="topBar.profileMenu.editProfile" />
         </a>
