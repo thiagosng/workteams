@@ -21,18 +21,6 @@ const ProfileMenu = ({ dispatch, user }) => {
         <strong>
           <FormattedMessage id="topBar.profileMenu.hello" />, {user.name || 'Anonymous'}
         </strong>
-        <div>
-          <strong className="mr-1">
-            <FormattedMessage id="topBar.profileMenu.billingPlan" />:{' '}
-          </strong>
-          Professional
-        </div>
-        <div>
-          <strong>
-            <FormattedMessage id="topBar.profileMenu.role" />:{' '}
-          </strong>
-          {user.role || '—'}
-        </div>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item>
@@ -41,11 +29,6 @@ const ProfileMenu = ({ dispatch, user }) => {
             <FormattedMessage id="topBar.profileMenu.email" />:{' '}
           </strong>
           {user.email || '—'}
-          <br />
-          <strong>
-            <FormattedMessage id="topBar.profileMenu.phone" />:{' '}
-          </strong>
-          {user.phone || '—'}
         </div>
       </Menu.Item>
       <Menu.Divider />

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import style from './style.module.scss'
-import logoAdasi from '../../../../public/resources/images/content/flowers-pieces/logo-adasi.png'
+// import logoAdasi from '../../../../public/resources/images/content/flowers-pieces/logo-adasi.png'
 
 const mapStateToProps = ({ settings }) => ({ settings })
 
@@ -17,12 +17,12 @@ const Footer = ({ settings: { isContentMaxWidth } }) => {
         <div className="row">
           <div className="col-md-8">
             <a
-              href="https://adasi.com.br"
+              href="https://google.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className={style.logo}
             >
-              <img src={logoAdasi} alt="logo" width="100px" />
+              WORKTEAMS
             </a>
             <br />
           </div>

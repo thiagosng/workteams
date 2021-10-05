@@ -15,7 +15,7 @@ const initialState = {
     // Read docs for available values: https://docs.visualbuilder.cloud
     // VB:REPLACE-START:SETTINGS
     authProvider: 'jwt',
-    logo: '',
+    logo: 'WORKTEAMS',
     version: 'fluent',
     theme: 'default',
     locale: 'en-US',
@@ -45,8 +45,8 @@ const initialState = {
     isSquaredBorders: false,
     isBorderless: false,
     layoutMenu: 'classic',
-    layoutTopbar: 'none',
-    layoutBreadcrumbs: 'v2',
+    layoutTopbar: 'v1',
+    layoutBreadcrumbs: 'v1',
     layoutFooter: 'v2',
     flyoutMenuType: 'flyout',
     flyoutMenuColor: 'blue',

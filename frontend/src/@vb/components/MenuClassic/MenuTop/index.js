@@ -5,9 +5,8 @@ import { Link, withRouter } from 'react-router-dom'
 import classNames from 'classnames'
 import store from 'store'
 import { find } from 'lodash'
-// import UserMenu from '../UserMenu'
-import logoAdasi from '../../../../../public/resources/images/content/flowers-pieces/logo-adasi.png'
 import style from './style.module.scss'
+import UserMenu from '../UserMenu'
 
 const mapStateToProps = ({ menu, settings, user }) => ({
   menuData: menu.menuData,
@@ -22,8 +21,7 @@ const MenuTop = ({
   location: { pathname },
 
   menuColor,
-  logo,
-  version,
+  // logo,
   role,
 }) => {
   const [selectedKeys, setSelectedKeys] = useState(store.get('app.menu.selectedKeys') || [])
@@ -57,7 +55,7 @@ const MenuTop = ({
       if (item.category) {
         return null
       }
-
+      ;<UserMenu />
       if (item.url) {
         return (
           <Menu.Item key={id} disabled={disabled}>
@@ -141,9 +139,8 @@ const MenuTop = ({
     >
       <div className={style.logoContainer}>
         <div className={style.logo}>
-          <img src={logoAdasi} alt="logo" width="100px" />
-          <div className={style.name}>{logo}</div>
-          <div className={`${style.descr} text-capitalize`}>{version}</div>
+          <div className={style.name}>WORKTEAMS</div>
+          <div className={`${style.descr} text-capitalize`} />
         </div>
       </div>
       <div className={style.navigation}>

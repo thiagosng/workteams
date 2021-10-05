@@ -5,7 +5,7 @@ module.exports = {
     "host": "127.0.0.1",
     "port": 5432,
     "username": "postgres",
-    "password": "98208986",
+    "password": "admin",
     "database": "workteams",
     "entities": [
       "./src/models/*.ts"
