@@ -19,7 +19,7 @@ const ProfileMenu = ({ dispatch, user }) => {
 
   const editProfile = (e) => {
     e.preventDefault()
-    history.push('/users')
+    history.push('/userProfile')
   }
 
   console.log(user)

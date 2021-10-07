@@ -95,10 +95,10 @@ const Form3 = () => {
               onChange={
                 id
                   ? (e) => {
-                      setUser({ ...user, name: e.target.value })
+                      setUser({ ...user, profileId: e.target.value })
                     }
                   : (e) => {
-                      setData({ ...data, name: e.target.value })
+                      setData({ ...data, profileId: e.target.value })
                     }
               }
             />
@@ -130,10 +130,10 @@ const Form3 = () => {
               onChange={
                 id
                   ? (e) => {
-                      setUser({ ...user, name: e.target.value })
+                      setUser({ ...user, email: e.target.value })
                     }
                   : (e) => {
-                      setData({ ...data, name: e.target.value })
+                      setData({ ...data, email: e.target.value })
                     }
               }
             />
@@ -147,10 +147,10 @@ const Form3 = () => {
               onChange={
                 id
                   ? (e) => {
-                      setUser({ ...user, name: e.target.value })
+                      setUser({ ...user, password: e.target.value })
                     }
                   : (e) => {
-                      setData({ ...data, name: e.target.value })
+                      setData({ ...data, password: e.target.value })
                     }
               }
             />

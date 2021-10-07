@@ -61,6 +61,11 @@ const routes = [
     Component: lazy(() => import('pages/segmentsRegister')),
     exact: true,
   },
+  {
+    path: '/userProfile',
+    Component: lazy(() => import('pages/userProfile')),
+    exact: true,
+  },
 
   // VB:REPLACE-END:ROUTER-CONFIG
   {
