@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+
+import Department from './Department';
 
 @Entity('users')
 class User {
@@ -22,6 +25,15 @@ class User {
 
   @Column()
   password: string;
+
+  @Column()
+  occupation: string;
+
+  @Column()
+  departmentId: number;
+
+  @Column()
+  timeExperience: number;
 
   @Column()
   avatar: string;
@@ -46,6 +58,9 @@ class User {
 
   @Column()
   createdBy: number;
+
+  @ManyToOne(type => Department, department => department.name)
+  department: Department[];
 }
 
 export default User;
