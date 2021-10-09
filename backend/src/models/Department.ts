@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import User from './User';
 
-@Entity('segments')
-class Segments {
+@Entity('department')
+class Department {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -16,4 +16,4 @@ class Segments {
   user: User[];
 }
 
-export default Segments;
+export default Department;

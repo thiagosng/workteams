@@ -30,7 +30,7 @@ export default class CreateDepartment1633634353074
     await queryRunner.createIndex(
       'department',
       new TableIndex({
-        name: 'idx_segments_1',
+        name: 'idx_department_1',
         columnNames: ['name'],
       }),
     );

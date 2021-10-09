@@ -11,6 +11,9 @@ interface IUserRequest {
   name?: string;
   email?: string;
   password?: string;
+  departmentId?: number;
+  occupation?: string;
+  timeExperience?: number;
   active?: boolean;
   createdBy?: number;
   newPassword?: string;
@@ -25,6 +28,9 @@ class UserService {
     name,
     email,
     password,
+    departmentId,
+    occupation,
+    timeExperience,
     active,
     createdBy,
   }: IUserRequest) {
@@ -46,6 +52,9 @@ class UserService {
       name,
       email,
       password: passwordHash,
+      departmentId,
+      occupation,
+      timeExperience,
       active,
       createdBy,
     });
@@ -68,7 +77,16 @@ class UserService {
 
   // atualiza user
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async update({ id, profileId, name, email, active }: IUserRequest) {
+  async update({
+    id,
+    profileId,
+    name,
+    email,
+    departmentId,
+    occupation,
+    timeExperience,
+    active,
+  }: IUserRequest) {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findOne({
@@ -84,6 +102,9 @@ class UserService {
       profileId,
       name,
       email,
+      departmentId,
+      occupation,
+      timeExperience,
       active,
     });
 

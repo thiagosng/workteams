@@ -21,7 +21,7 @@ class DepartmentService {
     });
 
     if (departmentAlreadyExists) {
-      throw new Error('Client already exists.');
+      throw new Error('Department already exists.');
     }
 
     const department = departmentRepository.create({

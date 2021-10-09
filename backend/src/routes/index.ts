@@ -3,6 +3,7 @@ import profilesRouter from './profiles.routes';
 import usersRouter from './users.routes';
 import accountsRouter from './Accounts.routes';
 import menuRouter from './Menu.routes';
+import departmentRouter from './Department.routes';
 
 const routes = Router();
 
