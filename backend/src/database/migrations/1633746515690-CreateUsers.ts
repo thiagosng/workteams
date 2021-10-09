@@ -46,6 +46,7 @@ export default class CreateUsers1633746515690 implements MigrationInterface {
           {
             name: 'department_id',
             type: 'int',
+            isNullable: true,
           },
           {
             name: 'time_experience',

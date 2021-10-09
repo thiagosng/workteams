@@ -8,7 +8,9 @@ const usersRouter = Router();
 
 usersRouter.get('/', async (request, response) => {
   const usersRepository = getCustomRepository(UsersRepository);
-  const users = await usersRepository.find();
+  const users = await usersRepository.find({
+    relations: ['department'],
+  });
 
   return response.json(users);
 });
@@ -32,7 +34,17 @@ usersRouter.get('/email/:email', async (request, response) => {
 });
 
 usersRouter.post('/create', async (request, response) => {
-  const { profileId, name, email, password, active, createdBy } = request.body;
+  const {
+    profileId,
+    name,
+    email,
+    password,
+    departmentId,
+    occupation,
+    timeExperience,
+    active,
+    createdBy,
+  } = request.body;
 
   const createUserService = new UserService();
   const user = await createUserService.create({
@@ -40,6 +52,9 @@ usersRouter.post('/create', async (request, response) => {
     name,
     email,
     password,
+    departmentId,
+    occupation,
+    timeExperience,
     active,
     createdBy,
   });

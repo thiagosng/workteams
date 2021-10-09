@@ -11,5 +11,6 @@ routes.use('/profiles', profilesRouter);
 routes.use('/users', usersRouter);
 routes.use('/accounts', accountsRouter);
 routes.use('/menu', menuRouter);
+routes.use('/department', departmentRouter);
 
 export default routes;
