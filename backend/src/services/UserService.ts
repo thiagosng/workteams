@@ -86,6 +86,7 @@ class UserService {
     occupation,
     timeExperience,
     active,
+    createdBy,
   }: IUserRequest) {
     const usersRepository = getCustomRepository(UsersRepository);
 
@@ -106,10 +107,11 @@ class UserService {
       occupation,
       timeExperience,
       active,
+      createdBy,
     });
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await usersRepository.update(id!, newUser);
+    await usersRepository.update(newUser.id, newUser);
 
     return newUser;
   }
