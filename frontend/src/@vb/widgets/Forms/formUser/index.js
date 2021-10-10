@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { Form, Input, Button, notification, Spin } from 'antd'
+import { Form, Input, Button, notification, Spin, Cascader } from 'antd'
 import { SmileOutlined, LoadingOutlined } from '@ant-design/icons'
 import store from 'store'
 import { createUser, updateUser, getUsersDataId } from 'services/usuarios'
+import { getDepartmentsData } from 'services/department'
 
 const Form3 = () => {
   const [data, setData] = useState({
-    name: null,
+    name: '',
     profileId: null,
-    email: null,
-    password: null,
+    email: '',
+    password: '',
     active: true,
+    occupation: '',
+    timeExperience: null,
+    departmentId: null,
     createdBy: store.get('id'),
   })
   const [user, setUser] = useState({})
   const [idUser, setId] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [department, setDepartment] = useState([])
   const { id } = useParams()
   const history = useHistory()
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
   const editUser = async () => {
     try {
-      const response = await updateUser(idUser)
-      console.log(response)
+      const response = await updateUser(id, user)
+      if (!response.error) {
+        openNotification()
+        history.push('/users')
+      }
+      console.log('idBotão:', idUser)
     } catch (error) {
-      console.log(error)
+      console.log('Error:', error)
     }
+  }
+
+  const getAllDepartments = async () => {
+    const response = await getDepartmentsData()
+    setDepartment(response)
+    console.log('KKKKKKKKKK', response)
   }
 
   const getUsersId = async () => {
@@ -52,6 +67,7 @@ const Form3 = () => {
     })
   }
   console.log('Data fora:', data)
+  console.log('User fora:', user)
 
   const newUser = async () => {
     try {
@@ -73,11 +89,20 @@ const Form3 = () => {
     console.log('***', data)
   }
 
+  const options2 = department.map((departments) => {
+    return {
+      value: departments.id,
+      label: departments.name,
+    }
+  })
+
   useEffect(() => {
     setIsLoading(true)
     if (id) {
       getUsersId()
+      getAllDepartments()
     } else {
+      getAllDepartments()
       setIsLoading(false)
     }
     console.log('***', id)
@@ -151,6 +176,58 @@ const Form3 = () => {
                     }
                   : (e) => {
                       setData({ ...data, password: e.target.value })
+                    }
+              }
+            />
+          </Form.Item>
+        </div>
+        <div className="col-md-6">
+          <Form.Item name="occupation" label="Ocupação">
+            <Input
+              placeholder="Ocupação"
+              defaultValue={user.occupation}
+              onChange={
+                id
+                  ? (e) => {
+                      setUser({ ...user, occupation: e.target.value })
+                    }
+                  : (e) => {
+                      setData({ ...data, occupation: e.target.value })
+                    }
+              }
+            />
+          </Form.Item>
+        </div>
+        <div className="col-md-6">
+          <Form.Item name="timeExperience" label="Tempo de Experiência">
+            <Input
+              placeholder="Ocupação"
+              defaultValue={user.timeExperience}
+              onChange={
+                id
+                  ? (e) => {
+                      setUser({ ...user, timeExperience: e.target.value })
+                    }
+                  : (e) => {
+                      setData({ ...data, timeExperience: e.target.value })
+                    }
+              }
+            />
+          </Form.Item>
+        </div>
+        <div className="col-md-6">
+          <Form.Item name="department" label="Departmento">
+            <Cascader
+              placeholder="Departamento"
+              defaultValue={user.departmentId}
+              options={options2}
+              onChange={
+                id
+                  ? (e) => {
+                      setUser({ ...user, departmentId: e[0] })
+                    }
+                  : (e) => {
+                      setData({ ...data, departmentId: e[0] })
                     }
               }
             />

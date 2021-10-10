@@ -10,7 +10,7 @@ const General23 = ({ user }) => {
         <img src="resources/images/avatars/2.jpg" alt="Anna Gray" />
       </div>
       <div className="font-weight-bold font-size-24 text-dark">{user.name}</div>
-      <div className="font-size-18 text-gray-6 mb-4 mt-n1">CEO</div>
+      <div className="font-size-18 text-gray-6 mb-4 mt-n1">{user.email}</div>
     </div>
   )
 }

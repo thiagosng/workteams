@@ -17,24 +17,23 @@ function TablesAntdCustomFilter() {
   const [searchedColumn, setSearchedColumn] = useState('')
   const history = useHistory()
   const searchInput = useRef(null)
-  const { confirm } = Modal
 
   function getColumnSearchProps(dataIndex) {
     return {
-      filterDropdown: ({ setSelectedKeys, selectedKeys, confirmar, clearFilters }) => (
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
         <div style={{ padding: 8 }}>
           <Input
             ref={searchInput}
             placeholder={`Search ${dataIndex}`}
             value={selectedKeys[0]}
             onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-            onPressEnter={() => handleSearch(selectedKeys, confirmar, dataIndex)}
+            onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
             style={{ width: 188, marginBottom: 8, display: 'block' }}
           />
           <Space>
             <Button
               type="primary"
-              onClick={() => handleSearch(selectedKeys, confirmar, dataIndex)}
+              onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
               icon={<SearchOutlined />}
               size="small"
               style={{ width: 90 }}
@@ -71,8 +70,8 @@ function TablesAntdCustomFilter() {
     }
   }
 
-  function handleSearch(selectedKeys, confirmar, dataIndex) {
-    confirmar()
+  function handleSearch(selectedKeys, confirm, dataIndex) {
+    confirm()
     setSearchText(selectedKeys[0])
     setSearchedColumn(dataIndex)
   }
@@ -103,7 +102,7 @@ function TablesAntdCustomFilter() {
   }
 
   function showDeleteConfirm(id) {
-    confirm({
+    Modal.confirm({
       title: 'Você deseja mesmo deletar esse usuário ?',
       icon: <ExclamationCircleOutlined />,
       content: 'O usuário será deletado de forma permanente',
@@ -141,7 +140,6 @@ function TablesAntdCustomFilter() {
       title: 'Nome',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => <a>{text}</a>,
       ...getColumnSearchProps('name'),
     },
     {

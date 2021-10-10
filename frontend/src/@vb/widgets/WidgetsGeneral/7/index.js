@@ -4,6 +4,7 @@ import store from 'store'
 
 const General7 = () => {
   const [users, setUsers] = useState({})
+  const [loading, setLoading] = useState(true)
 
   const id = store.get('id')
 
@@ -14,20 +15,23 @@ const General7 = () => {
 
   useEffect(() => {
     getUsers()
+    setLoading(true)
+    if (users.department !== undefined) {
+      setLoading(false)
+    } else {
+      users.department = 'Não definido'
+      setLoading(false)
+    }
   }, [])
 
   console.log(users)
 
-  return (
+  return !loading ? (
     <div>
       <div className="d-flex flex-wrap align-items-center mb-2">
-        <div className="flex-shrink-0 vb__utils__avatar mr-4 mb-2">
-          <img src="resources/images/avatars/5.jpg" alt="Mary Stanform" />
-        </div>
         <div className="mb-2">
           <div className="text-dark font-size-18 font-weight-bold text-nowrap">
-            {users.name}
-            <i className="align-text-bottom fe fe-check-square text-success ml-2 font-size-24 " />
+            Minhas Informações
           </div>
           <div className="text-uppercase">Support team</div>
         </div>
@@ -41,7 +45,7 @@ const General7 = () => {
           <tbody>
             <tr>
               <td className="text-gray-6 pl-0">Departamento</td>
-              <td className="pr-0 text-right text-dark">asdas</td>
+              <td className="pr-0 text-right text-dark">{users.department.name}</td>
             </tr>
             <tr>
               <td className="text-gray-6 pl-0">Ocupação</td>
@@ -57,6 +61,12 @@ const General7 = () => {
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  ) : (
+    <div className="text-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="sr-only">Loading...</span>
       </div>
     </div>
   )
