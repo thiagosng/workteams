@@ -37,11 +37,8 @@ class ProjectsService {
     }
 
     const projects = projectsRepository.create({
-      id,
       name,
       description,
-      createdAt,
-      finishAt,
       duration,
       status,
     });

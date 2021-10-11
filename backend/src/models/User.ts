@@ -71,11 +71,11 @@ class User {
   @JoinTable()
   department: Department[];
 
-  @ManyToMany(type => Projects, projects => projects.name, {
-    eager: true,
-  })
-  @JoinTable()
-  projects: Projects[];
+  // @ManyToMany(type => Projects, projects => projects.name, {
+  //   eager: true,
+  // })
+  // @JoinTable()
+  // projects: Projects[];
 }
 
 export default User;
