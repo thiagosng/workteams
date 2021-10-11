@@ -6,9 +6,11 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinTable,
+  ManyToMany,
 } from 'typeorm';
 
 import Department from './Department';
+import Projects from './Projects';
 
 @Entity('users')
 class User {
@@ -32,6 +34,9 @@ class User {
 
   @Column()
   departmentId: number;
+
+  @Column()
+  projectId: number;
 
   @Column()
   timeExperience: number;
@@ -65,6 +70,12 @@ class User {
   })
   @JoinTable()
   department: Department[];
+
+  @ManyToMany(type => Projects, projects => projects.name, {
+    eager: true,
+  })
+  @JoinTable()
+  projects: Projects[];
 }
 
 export default User;

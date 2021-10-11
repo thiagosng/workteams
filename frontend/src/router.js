@@ -13,22 +13,6 @@ const routes = [
     Component: lazy(() => import('pages/dashboard')),
     exact: true,
   },
-  // ROTAS DE CLIENTES
-  {
-    path: '/clients',
-    Component: lazy(() => import('pages/clientes')),
-    exact: true,
-  },
-  {
-    path: '/clients/register',
-    Component: lazy(() => import('pages/clientesRegister')),
-    exact: true,
-  },
-  {
-    path: '/clients/update/:id',
-    Component: lazy(() => import('pages/clientesRegister')),
-    exact: true,
-  },
   // ROTAS DE USUÁRIOS
   {
     path: '/users',

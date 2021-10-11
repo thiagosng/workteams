@@ -32,10 +32,7 @@ class Projects {
   @Column()
   status: string;
 
-  @ManyToMany(type => User, user => user.name, {
-    eager: true,
-  })
-  @JoinTable()
+  @ManyToMany(type => User, user => user.projectId)
   user: User[];
 }
 
