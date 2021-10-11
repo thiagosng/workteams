@@ -15,9 +15,6 @@ class Projects {
   id: number;
 
   @Column()
-  profileId: number;
-
-  @Column()
   name: string;
 
   @Column()

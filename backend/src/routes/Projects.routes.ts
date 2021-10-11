@@ -23,62 +23,38 @@ projectsRouter.get('/:id', async (request, response) => {
 });
 
 projectsRouter.post('/create', async (request, response) => {
-  const {
-    profileId,
-    name,
-    email,
-    password,
-    departmentId,
-    occupation,
-    timeExperience,
-    active,
-    createdBy,
-  } = request.body;
+  const { name, description, createdAt, finishAt, duration, status } =
+    request.body;
 
   const createProjectsService = new ProjectsService();
-  const projects = await createProjectsService.create({
-    profileId,
+  const projects = await createProjectsService.execute({
     name,
-    email,
-    password,
-    departmentId,
-    occupation,
-    timeExperience,
-    active,
-    createdBy,
+    description,
+    createdAt,
+    finishAt,
+    duration,
+    status,
   });
 
   return response.json(projects);
 });
 
 projectsRouter.post('/update/:id', async (request, response) => {
-  const {
-    profileId,
-    name,
-    email,
-    password,
-    departmentId,
-    occupation,
-    timeExperience,
-    active,
-    createdBy,
-  } = request.body;
+  const { name, description, createdAt, finishAt, duration, status } =
+    request.body;
   const { id } = request.params;
 
   const idNumber = parseInt(id, 10);
 
-  const projectsService = new UserService();
+  const projectsService = new ProjectsService();
   const projects = await projectsService.update({
     id: idNumber,
-    profileId,
     name,
-    email,
-    password,
-    departmentId,
-    occupation,
-    timeExperience,
-    active,
-    createdBy,
+    description,
+    createdAt,
+    finishAt,
+    duration,
+    status,
   });
 
   return response.json(projects);
@@ -93,3 +69,5 @@ projectsRouter.delete('/delete/:id', async (request, response) => {
   });
   return response.json(projects);
 });
+
+export default projectsRouter;
