@@ -9,7 +9,7 @@ interface IDepartmentRequest {
 
 class DepartmentService {
   // Create new accounts
-  async execute({ id, name }: IDepartmentRequest) {
+  async execute({ id, name, description }: IDepartmentRequest) {
     const departmentRepository = getCustomRepository(DepartmentRepository);
 
     if (!id && !name) {
@@ -27,6 +27,7 @@ class DepartmentService {
     const department = departmentRepository.create({
       id,
       name,
+      description,
     });
 
     await departmentRepository.save(department);
