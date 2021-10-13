@@ -5,8 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  JoinTable,
   ManyToMany,
+  JoinTable
 } from 'typeorm';
 
 import Department from './Department';
