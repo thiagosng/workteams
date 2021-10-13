@@ -15,8 +15,8 @@ const initialState = {
     // Read docs for available values: https://docs.visualbuilder.cloud
     // VB:REPLACE-START:SETTINGS
     authProvider: 'jwt',
-    logo: 'WORKTEAMS',
-    version: 'fluent',
+    logo: 'WorkTeams',
+    version: '1.0',
     theme: 'default',
     locale: 'en-US',
     isSidebarOpen: false,
