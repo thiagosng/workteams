@@ -23,15 +23,15 @@ projectsRouter.get('/:id', async (request, response) => {
 });
 
 projectsRouter.post('/create', async (request, response) => {
-  const { name, description, createdAt, finishAt, duration, status } =
+  const { name, description, startDate, endDate, duration, status } =
     request.body;
 
   const createProjectsService = new ProjectsService();
   const projects = await createProjectsService.execute({
     name,
     description,
-    createdAt,
-    finishAt,
+    startDate,
+    endDate,
     duration,
     status,
   });
@@ -40,7 +40,7 @@ projectsRouter.post('/create', async (request, response) => {
 });
 
 projectsRouter.post('/update/:id', async (request, response) => {
-  const { name, description, createdAt, finishAt, duration, status } =
+  const { name, description, startDate, endDate, duration, status } =
     request.body;
   const { id } = request.params;
 
@@ -51,8 +51,8 @@ projectsRouter.post('/update/:id', async (request, response) => {
     id: idNumber,
     name,
     description,
-    createdAt,
-    finishAt,
+    startDate,
+    endDate,
     duration,
     status,
   });

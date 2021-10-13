@@ -5,8 +5,8 @@ interface IProjectsRequest {
   id?: number;
   name?: string;
   description?: string;
-  createdAt?: Date;
-  finishAt?: Date;
+  startDate?: Date;
+  endDate?: Date;
   duration?: string;
   status?: string;
 }
@@ -17,8 +17,8 @@ class ProjectsService {
     id,
     name,
     description,
-    createdAt,
-    finishAt,
+    startDate,
+    endDate,
     duration,
     status,
   }: IProjectsRequest) {
@@ -53,8 +53,8 @@ class ProjectsService {
     id,
     name,
     description,
-    createdAt,
-    finishAt,
+    startDate,
+    endDate,
     duration,
     status,
   }: IProjectsRequest) {
@@ -71,8 +71,8 @@ class ProjectsService {
     const updateProject = projectsRepository.create({
       name,
       description,
-      createdAt,
-      finishAt,
+      startDate,
+      endDate,
       duration,
       status,
     });

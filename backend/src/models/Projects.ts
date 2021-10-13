@@ -21,10 +21,10 @@ class Projects {
   description: string;
 
   @CreateDateColumn()
-  createdAt: Date;
+  startDate: Date;
 
   @CreateDateColumn()
-  finishAt: Date;
+  endDate: Date;
 
   @Column()
   duration: string;
