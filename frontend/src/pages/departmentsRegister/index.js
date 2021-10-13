@@ -1,12 +1,13 @@
 import React from 'react'
 import HeadersCardHeader from '@vb/widgets/Headers/CardHeaderRegister'
-import Forms3 from '@vb/widgets/Forms/formClient'
+import Forms3 from '@vb/widgets/Forms/formDepartment'
+import './styles.css'
 
-const ClientesRegister = () => {
+const UsersRegister = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <HeadersCardHeader data={{ title: 'Novo cliente', route: '/clients' }} />
+        <HeadersCardHeader data={{ title: 'Novo Departamento', route: '/department' }} />
       </div>
       <div className="card-body">
         <Forms3 />
@@ -15,4 +16,4 @@ const ClientesRegister = () => {
   )
 }
 
-export default ClientesRegister
+export default UsersRegister

@@ -12,6 +12,7 @@ interface IUserRequest {
   email?: string;
   password?: string;
   departmentId?: number;
+  projectId?: number;
   occupation?: string;
   timeExperience?: number;
   active?: boolean;
@@ -29,6 +30,7 @@ class UserService {
     email,
     password,
     departmentId,
+    projectId,
     occupation,
     timeExperience,
     active,
@@ -53,6 +55,7 @@ class UserService {
       email,
       password: passwordHash,
       departmentId,
+      projectId,
       occupation,
       timeExperience,
       active,
@@ -83,9 +86,11 @@ class UserService {
     name,
     email,
     departmentId,
+    projectId,
     occupation,
     timeExperience,
     active,
+    createdBy,
   }: IUserRequest) {
     const usersRepository = getCustomRepository(UsersRepository);
 
@@ -103,13 +108,15 @@ class UserService {
       name,
       email,
       departmentId,
+      projectId,
       occupation,
       timeExperience,
       active,
+      createdBy,
     });
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await usersRepository.update(id!, newUser);
+    await usersRepository.update(newUser.id, newUser);
 
     return newUser;
   }

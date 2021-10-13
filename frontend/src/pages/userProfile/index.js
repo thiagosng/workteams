@@ -24,6 +24,15 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
+        <div className="col-lg-4 col-md-12">
+          <div>
+            <div className="card">
+              <div className="card-body">
+                <WidgetsGeneral7 />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       {/* <Helmet title="Ant Design" />
       <div className="row">

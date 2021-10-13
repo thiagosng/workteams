@@ -63,14 +63,33 @@ usersRouter.post('/create', async (request, response) => {
 });
 
 usersRouter.post('/update/:id', async (request, response) => {
-  const { id, profileId, name, email } = request.body;
-
-  const userService = new UserService();
-  const user = await userService.update({
-    id,
+  const {
     profileId,
     name,
     email,
+    password,
+    departmentId,
+    occupation,
+    timeExperience,
+    active,
+    createdBy,
+  } = request.body;
+  const { id } = request.params;
+
+  const idNumber = parseInt(id, 10);
+
+  const userService = new UserService();
+  const user = await userService.update({
+    id: idNumber,
+    profileId,
+    name,
+    email,
+    password,
+    departmentId,
+    occupation,
+    timeExperience,
+    active,
+    createdBy,
   });
 
   return response.json(user);

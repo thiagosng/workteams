@@ -21,21 +21,23 @@ departmentRouter.get('/:id', async (request, response) => {
 });
 
 departmentRouter.post('/create', async (request, response) => {
-  const { id, name } = request.body;
+  const { id, name, description } = request.body;
   const createDepartmentService = new DepartmentService();
   const department = await createDepartmentService.execute({
     id,
     name,
+    description,
   });
   return response.json(department);
 });
 
 departmentRouter.post('/update/:id', async (request, response) => {
-  const { id, name } = request.body;
+  const { id, name, description } = request.body;
   const createDepartmentService = new DepartmentService();
   const department = await createDepartmentService.update({
     id,
     name,
+    description,
   });
   return response.json(department);
 });

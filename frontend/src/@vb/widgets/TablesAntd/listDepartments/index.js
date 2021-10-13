@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Table, Input, Button, Space, Divider, Modal } from 'antd'
+import Highlighter from 'react-highlight-words'
 import {
   DeleteOutlined,
   ExclamationCircleOutlined,
@@ -7,15 +8,15 @@ import {
   SearchOutlined,
 } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom'
-import { getUsersData, deleteUser } from 'services/usuarios'
-import Highlighter from 'react-highlight-words'
+import { getDepartmentsData, deleteDepartment } from 'services/department'
 
 function TablesAntdCustomFilter() {
-  const [users2, setUsers] = useState([])
+  const [departments, setDepartments] = useState([])
   const [isDelete, setIsDelete] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [searchedColumn, setSearchedColumn] = useState('')
   const history = useHistory()
+
   const searchInput = useRef(null)
 
   function getColumnSearchProps(dataIndex) {
@@ -81,37 +82,31 @@ function TablesAntdCustomFilter() {
     setSearchText('')
   }
 
-  useEffect(() => {
-    getAllUsers()
-    setIsDelete(false)
-    console.log(users2)
-  }, [isDelete])
-
-  const getAllUsers = async () => {
+  const getAllDepartments = async () => {
     try {
-      const users = await getUsersData()
-      setUsers(users)
-      console.log(users)
+      const department = await getDepartmentsData()
+      setDepartments(department)
+      console.log(department)
     } catch (error) {
       console.log(error)
     }
   }
 
   const GoToEdit = (id) => {
-    history.push(`/users/update/${id}`)
+    history.push(`/department/update/${id}`)
   }
 
   function showDeleteConfirm(id) {
     Modal.confirm({
-      title: 'Você deseja mesmo deletar esse usuário ?',
+      title: 'Você deseja mesmo deletar esse segmento ?',
       icon: <ExclamationCircleOutlined />,
-      content: 'O usuário será deletado de forma permanente',
+      content: 'O segmento será deletado de forma permanente',
       okText: 'Deletar',
       okType: 'danger',
       cancelText: 'Cancelar',
       onOk() {
         try {
-          deleteUser(id)
+          deleteDepartment(id)
           setIsDelete(true)
         } catch (error) {
           console.log(error)
@@ -123,45 +118,43 @@ function TablesAntdCustomFilter() {
     })
   }
 
-  if (users2.length === 0) {
+  useEffect(() => {
+    getAllDepartments()
+    setIsDelete(false)
+    console.log(departments)
+  }, [isDelete])
+
+  if (departments.length === 0) {
     return <div>Loading...</div>
   }
 
   const columns = [
     {
-      title: 'Avatar',
-      dataIndex: 'avatar',
-      key: 'avatar',
-      render: (avatar) => {
-        return <img src={avatar} alt="avatar" />
-      },
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+      width: '20%',
+      ...getColumnSearchProps('id'),
     },
     {
       title: 'Nome',
       dataIndex: 'name',
       key: 'name',
+      width: '30%',
       ...getColumnSearchProps('name'),
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-      ...getColumnSearchProps('email'),
-    },
-    {
-      title: 'Ativo',
-      dataIndex: 'active',
-      key: 'active',
-      render: (active) => {
-        return active ? 'Sim' : 'Não'
-      },
-    },
-    {
-      title: 'Último Acesso',
-      dataIndex: 'lastAcess',
-      key: 'lastAcess',
-      render: (lastAcess) => {
-        return lastAcess || 'Sem acessos'
+      title: 'Descrição',
+      dataIndex: 'description',
+      key: 'description',
+      width: '30%',
+      ...getColumnSearchProps('description'),
+      render: (description) => {
+        return description === null ? (
+          <span>Sem descrição</span>
+        ) : (
+          <span>{description.substring(0, 30)} ...</span>
+        )
       },
     },
     {
@@ -190,7 +183,7 @@ function TablesAntdCustomFilter() {
     },
   ]
 
-  return <Table columns={columns} dataSource={users2} />
+  return <Table columns={columns} dataSource={departments} />
 }
 
 export default TablesAntdCustomFilter

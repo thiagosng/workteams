@@ -13,22 +13,6 @@ const routes = [
     Component: lazy(() => import('pages/dashboard')),
     exact: true,
   },
-  // ROTAS DE CLIENTES
-  {
-    path: '/clients',
-    Component: lazy(() => import('pages/clientes')),
-    exact: true,
-  },
-  {
-    path: '/clients/register',
-    Component: lazy(() => import('pages/clientesRegister')),
-    exact: true,
-  },
-  {
-    path: '/clients/update/:id',
-    Component: lazy(() => import('pages/clientesRegister')),
-    exact: true,
-  },
   // ROTAS DE USUÁRIOS
   {
     path: '/users',
@@ -47,18 +31,18 @@ const routes = [
   },
   // ROTAS DE SEGMENTOS
   {
-    path: '/segments',
-    Component: lazy(() => import('pages/segmentos')),
+    path: '/department',
+    Component: lazy(() => import('pages/departments')),
     exact: true,
   },
   {
-    path: '/segments/register',
-    Component: lazy(() => import('pages/segmentsRegister')),
+    path: '/department/register',
+    Component: lazy(() => import('pages/departmentsRegister')),
     exact: true,
   },
   {
-    path: '/segments/update/:id',
-    Component: lazy(() => import('pages/segmentsRegister')),
+    path: '/department/update/:id',
+    Component: lazy(() => import('pages/departmentsRegister')),
     exact: true,
   },
   {
