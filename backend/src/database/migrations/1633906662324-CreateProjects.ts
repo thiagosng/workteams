@@ -1,61 +1,89 @@
-import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
+import {MigrationInterface, QueryRunner, Table , TableForeignKey, TableIndex} from "typeorm";
 
-export default class CreateProjects1633906662324 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(
-      new Table({
-        name: 'projects',
-        columns: [
-          {
-            name: 'id',
-            type: 'serial',
-            isPrimary: true,
-          },
-          {
-            name: 'name',
-            type: 'varchar(255)',
-            isNullable: false,
-          },
-          {
-            name: 'description',
-            type: 'varchar(255)',
-            isNullable: true,
-          },
-          {
-            name: 'created_at',
-            type: 'timestamp',
-            default: 'now()',
-          },
-          {
-            name: 'finish_at',
-            type: 'timestamp',
-            isNullable: true,
-          },
-          {
-            name: 'duration',
-            type: 'int',
-            isNullable: true,
-          },
-          {
-            name: 'status',
-            type: 'varchar(255)',
-            isNullable: true,
-          },
-        ],
-      }),
-      true,
-    );
+export class CreateProjects1633906662324 implements MigrationInterface {
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.createTable(
+            new Table({
+                name: 'projects',
+                columns: [
+                    {
+                        name: 'id',
+                        type: 'serial',
+                        isPrimary: true,
+                    },
+                    {
+                        name: 'name',
+                        type: 'varchar(255)',
+                        
+                    },
+                    {
+                        name: 'description',
+                        type: 'varchar(255)',
+                    },
+                    {
+                        name: 'start_date',
+                        type: 'varchar(255)',
+                    },
+                    {
+                        name: 'end_date',
+                        type: 'varchar(255)',
+                    },
+                    {
+                        name: 'duration',
+                        type: 'varchar(255)',
+                    },
+                    {
+                        name: 'user_id',
+                        type: 'int',
+                        isNullable: true,
+                    },
+                ],
+            }),
+            true,
+        );
+        await queryRunner.createIndex(
+            'projects',
+            new TableIndex({
+              name: 'idx_project_1',
+              columnNames: ['name'],
+            }),
+          );
+      
+          await queryRunner.createIndex(
+            'projects',
+            new TableIndex({
+              name: 'idx_project_2',
+              columnNames: ['description'],
+            }),
+          );
 
-    await queryRunner.createIndex(
-      'projects',
-      new TableIndex({
-        name: 'idx_projects_1',
-        columnNames: ['name'],
-      }),
-    );
-  }
+          await queryRunner.createIndex(
+            'projects',
+            new TableIndex({
+              name: 'idx_project_3',
+              columnNames: ['start_date'],
+            }),
+          );
 
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('projects');
-  }
+          await queryRunner.createIndex(
+            'projects',
+            new TableIndex({
+              name: 'idx_project_4',
+              columnNames: ['end_date'],
+            }),
+          );
+
+          await queryRunner.createIndex(
+            'projects',
+            new TableIndex({
+              name: 'idx_project_5',
+              columnNames: ['end_date'],
+            }),
+          );
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('projects');
+    }
+
 }

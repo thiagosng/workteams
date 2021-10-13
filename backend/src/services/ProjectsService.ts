@@ -7,7 +7,7 @@ interface IProjectsRequest {
   description?: string;
   createdAt?: Date;
   finishAt?: Date;
-  duration?: number;
+  duration?: string;
   status?: string;
 }
 
