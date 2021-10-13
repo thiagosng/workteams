@@ -8,7 +8,9 @@ interface IProjectsRequest {
   startDate?: Date;
   endDate?: Date;
   duration?: string;
+  userId?: number;
   status?: string;
+  active?: boolean;
 }
 
 class ProjectsService {
@@ -20,7 +22,9 @@ class ProjectsService {
     startDate,
     endDate,
     duration,
+    userId,
     status,
+    active,
   }: IProjectsRequest) {
     const projectsRepository = getCustomRepository(ProjectsRepository);
 
@@ -39,8 +43,12 @@ class ProjectsService {
     const projects = projectsRepository.create({
       name,
       description,
+      startDate,
+      endDate,
       duration,
+      userId,
       status,
+      active,
     });
 
     await projectsRepository.save(projects);
@@ -56,7 +64,9 @@ class ProjectsService {
     startDate,
     endDate,
     duration,
+    userId,
     status,
+    active,
   }: IProjectsRequest) {
     const projectsRepository = getCustomRepository(ProjectsRepository);
 
@@ -74,7 +84,9 @@ class ProjectsService {
       startDate,
       endDate,
       duration,
+      userId,
       status,
+      active,
     });
 
     await projectsRepository.update(id!, updateProject);

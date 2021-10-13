@@ -30,7 +30,13 @@ class Projects {
   duration: string;
 
   @Column()
+  userId: number;
+
+  @Column()
   status: string;
+
+  @Column()
+  active: boolean;
 
   @ManyToMany(type => User, user => user.projectId)
   user: User[];

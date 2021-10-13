@@ -43,6 +43,10 @@ export default class CreateProjects1633906662324 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'status',
+            type: 'varchar(255)',
+          },
+          {
             name: 'active',
             type: 'boolean',
           },

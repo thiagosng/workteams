@@ -23,8 +23,16 @@ projectsRouter.get('/:id', async (request, response) => {
 });
 
 projectsRouter.post('/create', async (request, response) => {
-  const { name, description, startDate, endDate, duration, status } =
-    request.body;
+  const {
+    name,
+    description,
+    startDate,
+    endDate,
+    duration,
+    userId,
+    status,
+    active,
+  } = request.body;
 
   const createProjectsService = new ProjectsService();
   const projects = await createProjectsService.execute({
@@ -33,7 +41,9 @@ projectsRouter.post('/create', async (request, response) => {
     startDate,
     endDate,
     duration,
+    userId,
     status,
+    active,
   });
 
   return response.json(projects);
