@@ -38,8 +38,8 @@ class Projects {
   @Column()
   active: boolean;
 
-  @ManyToMany(type => User, user => user.projectId)
-  user: User[];
+  // @ManyToMany(type => User, user => user.projectId)
+  // user: User[];
 }
 
 export default Projects;

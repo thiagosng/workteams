@@ -10,25 +10,8 @@ const Projects = () => {
           <WidgetsGeneral22 />
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-4 col-md-12">
-          <div>
-            <div className="card">
-              <div className="card-body">
-                <WidgetsGeneral13 />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-12">
-          <div>
-            <div className="card">
-              <div className="card-body">
-                <WidgetsGeneral13 />
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <WidgetsGeneral13 />
       </div>
     </div>
   )
