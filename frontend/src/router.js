@@ -55,6 +55,11 @@ const routes = [
     Component: lazy(() => import('pages/projects')),
     exact: true,
   },
+  {
+    path: '/projects/details/:id',
+    Component: lazy(() => import('pages/projectsDetails')),
+    exact: true,
+  },
 
   // VB:REPLACE-END:ROUTER-CONFIG
   {

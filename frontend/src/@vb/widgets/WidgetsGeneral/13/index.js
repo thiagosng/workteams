@@ -33,7 +33,13 @@ const General13 = () => {
     <div className="col-lg-4 col-md-12">
       <div>
         <div className="card">
-          <div className="card-body">
+          <div
+            className={`${style.card}`}
+            onClick={() => {alert("Oii")}}
+            onKeyDown={() => alert("sad")}
+            role="button"
+            tabIndex={0}
+          >
             <div
               className={`${style.head} height-200 d-flex flex-column`}
               style={{
