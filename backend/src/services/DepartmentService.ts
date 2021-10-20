@@ -5,11 +5,12 @@ interface IDepartmentRequest {
   id?: number;
   name?: string;
   description?: string;
+  userId?: number;
 }
 
 class DepartmentService {
   // Create new accounts
-  async execute({ id, name, description }: IDepartmentRequest) {
+  async execute({ id, name, description, userId }: IDepartmentRequest) {
     const departmentRepository = getCustomRepository(DepartmentRepository);
 
     if (!id && !name) {
@@ -28,6 +29,7 @@ class DepartmentService {
       id,
       name,
       description,
+      userId,
     });
 
     await departmentRepository.save(department);
@@ -36,7 +38,7 @@ class DepartmentService {
   }
 
   // update accounts
-  async update({ id, name, description }: IDepartmentRequest) {
+  async update({ id, name, description, userId }: IDepartmentRequest) {
     const departmentRepository = getCustomRepository(DepartmentRepository);
 
     const accountAlreadyExist = await departmentRepository.findOne({
@@ -50,6 +52,7 @@ class DepartmentService {
     const updateDepartment = departmentRepository.create({
       name,
       description,
+      userId,
     });
 
     await departmentRepository.update(id!, updateDepartment);

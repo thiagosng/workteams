@@ -12,7 +12,6 @@ interface IUserRequest {
   email?: string;
   password?: string;
   departmentId?: number;
-  projectId?: number;
   occupation?: string;
   timeExperience?: number;
   active?: boolean;
@@ -30,7 +29,6 @@ class UserService {
     email,
     password,
     departmentId,
-    projectId,
     occupation,
     timeExperience,
     active,
@@ -55,7 +53,6 @@ class UserService {
       email,
       password: passwordHash,
       departmentId,
-      projectId,
       occupation,
       timeExperience,
       active,
@@ -86,7 +83,6 @@ class UserService {
     name,
     email,
     departmentId,
-    projectId,
     occupation,
     timeExperience,
     active,
@@ -108,7 +104,6 @@ class UserService {
       name,
       email,
       departmentId,
-      projectId,
       occupation,
       timeExperience,
       active,

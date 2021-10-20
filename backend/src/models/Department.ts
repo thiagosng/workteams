@@ -12,6 +12,9 @@ class Department {
   @Column()
   description: string;
 
+  @Column()
+  userId: number;
+
   @OneToMany(type => User, user => user.departmentId)
   user: User[];
 }

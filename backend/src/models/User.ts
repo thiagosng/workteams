@@ -34,9 +34,6 @@ class User {
   departmentId: number;
 
   @Column()
-  projectId: number;
-
-  @Column()
   timeExperience: number;
 
   @Column()

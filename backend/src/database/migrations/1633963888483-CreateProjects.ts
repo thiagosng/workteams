@@ -6,7 +6,7 @@ import {
   TableIndex,
 } from 'typeorm';
 
-export default class CreateProjects1633906662324 implements MigrationInterface {
+export default class CreateProjects1633963888483 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -59,6 +59,17 @@ export default class CreateProjects1633906662324 implements MigrationInterface {
       new TableIndex({
         name: 'idx_project_1',
         columnNames: ['name'],
+      }),
+    );
+
+    await queryRunner.createForeignKey(
+      'projects',
+      new TableForeignKey({
+        columnNames: ['user_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'users',
+        onDelete: 'RESTRICT',
+        onUpdate: 'CASCADE',
       }),
     );
   }

@@ -1,6 +1,12 @@
-import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+  TableIndex,
+} from 'typeorm';
 
-export default class CreateDepartment1633634353074
+export default class CreateDepartment1634750236322
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -22,6 +28,11 @@ export default class CreateDepartment1633634353074
             type: 'varchar(255)',
             isNullable: true,
           },
+          {
+            name: 'user_id',
+            type: 'int',
+            isNullable: true,
+          },
         ],
       }),
       true,
@@ -32,6 +43,17 @@ export default class CreateDepartment1633634353074
       new TableIndex({
         name: 'idx_department_1',
         columnNames: ['name'],
+      }),
+    );
+
+    await queryRunner.createForeignKey(
+      'department',
+      new TableForeignKey({
+        columnNames: ['user_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'users',
+        onDelete: 'RESTRICT',
+        onUpdate: 'CASCADE',
       }),
     );
   }
