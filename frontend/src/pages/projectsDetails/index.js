@@ -1,12 +1,12 @@
 import React from 'react'
+import ProjectList from '@vb/widgets/Forms/projectList'
 
 const ProjectsDetails = () => {
   return (
     <div>
-      <h1>Projects Details</h1>
+      <ProjectList />
     </div>
   )
 }
 
 export default ProjectsDetails
-

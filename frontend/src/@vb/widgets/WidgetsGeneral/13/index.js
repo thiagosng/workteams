@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Menu, Dropdown } from 'antd'
 import { getProjectsData } from 'services/projects'
+import { useHistory } from 'react-router-dom'
 import style from './style.module.scss'
 
 const dropdownMenu = (
@@ -29,14 +30,16 @@ const General13 = () => {
     setProjects(AllProjects)
   }
 
+  const history = useHistory()
+
   const projetos = projects.map((project) => (
     <div className="col-lg-4 col-md-12">
       <div>
         <div className="card">
           <div
             className={`${style.card}`}
-            onClick={() => {alert("Oii")}}
-            onKeyDown={() => alert("sad")}
+            onClick={() => history.push(`/projects/details/${project.id}`)}
+            onKeyDown={() => alert('sad')}
             role="button"
             tabIndex={0}
           >
