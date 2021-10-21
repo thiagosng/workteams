@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  JoinTable,
+  OneToMany,
+} from 'typeorm';
 import User from './User';
 
 @Entity('department')
@@ -12,10 +18,8 @@ class Department {
   @Column()
   description: string;
 
-  @Column()
-  userId: number;
-
-  @OneToMany(type => User, user => user.departmentId)
+  @OneToMany(() => User, user => user.department)
+  @JoinTable()
   user: User[];
 }
 

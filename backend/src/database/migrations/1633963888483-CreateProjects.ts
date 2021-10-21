@@ -1,10 +1,4 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-  TableForeignKey,
-  TableIndex,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
 
 export default class CreateProjects1633963888483 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -38,11 +32,6 @@ export default class CreateProjects1633963888483 implements MigrationInterface {
             type: 'varchar(255)',
           },
           {
-            name: 'user_id',
-            type: 'int',
-            isNullable: true,
-          },
-          {
             name: 'status',
             type: 'varchar(255)',
           },
@@ -62,14 +51,33 @@ export default class CreateProjects1633963888483 implements MigrationInterface {
       }),
     );
 
-    await queryRunner.createForeignKey(
-      'projects',
-      new TableForeignKey({
-        columnNames: ['user_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'users',
-        onDelete: 'RESTRICT',
-        onUpdate: 'CASCADE',
+    await queryRunner.createTable(
+      new Table({
+        name: 'projects_users_users',
+        columns: [
+          {
+            name: 'projectId',
+            type: 'int',
+            isPrimary: true,
+          },
+          {
+            name: 'userId',
+            type: 'int',
+            isPrimary: true,
+          },
+        ],
+        foreignKeys: [
+          {
+            columnNames: ['projectId'],
+            referencedColumnNames: ['id'],
+            referencedTableName: 'projects',
+          },
+          {
+            columnNames: ['userId'],
+            referencedColumnNames: ['id'],
+            referencedTableName: 'users',
+          },
+        ],
       }),
     );
   }
