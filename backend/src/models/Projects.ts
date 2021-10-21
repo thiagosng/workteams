@@ -36,7 +36,7 @@ class Projects {
   active: boolean;
 
   @ManyToMany(() => User)
-  @JoinTable()
+  @JoinTable({ name: 'projects_users_users' })
   user: User[];
 }
 

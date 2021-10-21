@@ -18,7 +18,7 @@ class Department {
   @Column()
   description: string;
 
-  @OneToMany(() => User, user => user.department)
+  @OneToMany(() => User, user => user.departmentId)
   @JoinTable()
   user: User[];
 }

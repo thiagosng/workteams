@@ -8,7 +8,7 @@ const projectsRouter = Router();
 
 projectsRouter.get('/', async (request, response) => {
   const projectsRepository = getCustomRepository(ProjectsRepository);
-  const projects = await projectsRepository.find({ relations: ['users'] });
+  const projects = await projectsRepository.find();
 
   return response.json(projects);
 });

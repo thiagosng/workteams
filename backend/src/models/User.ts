@@ -5,10 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  ManyToMany,
   JoinTable,
 } from 'typeorm';
 
 import Department from './Department';
+import Projects from './Projects';
 
 @Entity('users')
 class User {
@@ -66,7 +68,7 @@ class User {
   @JoinTable()
   department: Department[];
 
-  // @ManyToMany(type => Projects, projects => projects.name, {
+  // @ManyToMany(() => Projects, {
   //   eager: true,
   // })
   // @JoinTable()
