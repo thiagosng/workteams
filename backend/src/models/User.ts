@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 import Department from './Department';
-import Projects from './Projects';
+import ProjectsUsers from './ProjectsUsers';
 
 @Entity('users')
 class User {
@@ -67,6 +67,12 @@ class User {
   })
   @JoinTable()
   department: Department[];
+
+  @ManyToOne(type => Department, department => department.name, {
+    eager: true,
+  })
+  @JoinTable()
+  projectsUsers: ProjectsUsers[];
 
   // @ManyToMany(() => Projects, {
   //   eager: true,

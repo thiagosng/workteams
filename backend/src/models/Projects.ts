@@ -5,9 +5,10 @@ import {
   CreateDateColumn,
   JoinTable,
   ManyToMany,
+  OneToMany,
 } from 'typeorm';
-
 import User from './User';
+import ProjectsUsers from './ProjectsUsers';
 
 @Entity('projects')
 class Projects {
@@ -35,9 +36,13 @@ class Projects {
   @Column()
   active: boolean;
 
-  @ManyToMany(() => User)
-  @JoinTable({ name: 'projects_users_users' })
+  @ManyToMany(type => User)
+  @JoinTable()
   user: User[];
+
+  // @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.projectId)
+  // @JoinTable()
+  // projectsUsers: ProjectsUsers[];
 }
 
 export default Projects;

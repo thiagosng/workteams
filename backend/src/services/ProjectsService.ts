@@ -22,7 +22,6 @@ class ProjectsService {
     startDate,
     endDate,
     duration,
-    userId,
     status,
     active,
   }: IProjectsRequest) {
@@ -46,7 +45,6 @@ class ProjectsService {
       startDate,
       endDate,
       duration,
-      userId,
       status,
       active,
     });
@@ -64,7 +62,6 @@ class ProjectsService {
     startDate,
     endDate,
     duration,
-    userId,
     status,
     active,
   }: IProjectsRequest) {
@@ -84,7 +81,6 @@ class ProjectsService {
       startDate,
       endDate,
       duration,
-      userId,
       status,
       active,
     });
