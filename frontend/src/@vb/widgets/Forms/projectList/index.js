@@ -26,7 +26,14 @@ const ProjectsList = () => {
     getProjectsId()
   }, [])
 
-  return <ul>{projects.name}</ul>
+  return (
+    <div>
+      <h1>{projects.name}</h1>
+      <div className="card-body">
+        <h3>{projects.description}</h3>
+      </div>
+    </div>
+  )
 }
 
 export default ProjectsList
