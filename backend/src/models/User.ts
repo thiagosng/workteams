@@ -68,11 +68,11 @@ class User {
   @JoinTable()
   department: Department[];
 
-  @ManyToOne(type => Department, department => department.name, {
-    eager: true,
-  })
-  @JoinTable()
-  projectsUsers: ProjectsUsers[];
+  // @ManyToOne(type => Department, department => department.name, {
+  //   eager: true,
+  // })
+  // @JoinTable()
+  // projectsUsers: ProjectsUsers[];
 
   // @ManyToMany(() => Projects, {
   //   eager: true,
