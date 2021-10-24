@@ -6,6 +6,7 @@ import DepartmentService from '../services/DepartmentService';
 
 const departmentRouter = Router();
 
+// pegando todos o departamentos[x]
 departmentRouter.get('/', async (request, response) => {
   const departmentRepository = getCustomRepository(DepartmentRepository);
   const department = await departmentRepository.find();
@@ -13,6 +14,7 @@ departmentRouter.get('/', async (request, response) => {
   return response.json(department);
 });
 
+//pegando departamento por id [x]
 departmentRouter.get('/:id', async (request, response) => {
   const departmentRepository = getCustomRepository(DepartmentRepository);
   const department = await departmentRepository.findOne(request.params.id);
@@ -20,30 +22,31 @@ departmentRouter.get('/:id', async (request, response) => {
   return response.json(department);
 });
 
+//Criando um novo o objeto [x]
 departmentRouter.post('/create', async (request, response) => {
-  const { id, name, description, userId } = request.body;
+  const { id, name, description} = request.body;
   const createDepartmentService = new DepartmentService();
   const department = await createDepartmentService.execute({
     id,
     name,
-    description,
-    userId,
+    description
   });
   return response.json(department);
 });
 
+//Alterando um objetos existente []
 departmentRouter.post('/update/:id', async (request, response) => {
-  const { id, name, description, userId } = request.body;
+  const { id, name, description} = request.body;
   const createDepartmentService = new DepartmentService();
   const department = await createDepartmentService.update({
     id,
     name,
-    description,
-    userId,
+    description
   });
   return response.json(department);
 });
 
+//Deletando um objeto existente []
 departmentRouter.delete('/delete/:id', async (request, response) => {
   const { id } = request.params;
   const idNumber = parseInt(id, 10);
