@@ -51,35 +51,35 @@ export default class CreateProjects1633963888483 implements MigrationInterface {
       }),
     );
 
-    await queryRunner.createTable(
-      new Table({
-        name: 'projects_users_users',
-        columns: [
-          {
-            name: 'projectId',
-            type: 'int',
-            isPrimary: true,
-          },
-          {
-            name: 'userId',
-            type: 'int',
-            isPrimary: true,
-          },
-        ],
-        foreignKeys: [
-          {
-            columnNames: ['projectId'],
-            referencedColumnNames: ['id'],
-            referencedTableName: 'projects',
-          },
-          {
-            columnNames: ['userId'],
-            referencedColumnNames: ['id'],
-            referencedTableName: 'users',
-          },
-        ],
-      }),
-    );
+    // await queryRunner.createTable(
+    //   new Table({
+    //     name: 'projects_users_users',
+    //     columns: [
+    //       {
+    //         name: 'projectId',
+    //         type: 'int',
+    //         isPrimary: true,
+    //       },
+    //       {
+    //         name: 'userId',
+    //         type: 'int',
+    //         isPrimary: true,
+    //       },
+    //     ],
+    //     foreignKeys: [
+    //       {
+    //         columnNames: ['projectId'],
+    //         referencedColumnNames: ['id'],
+    //         referencedTableName: 'projects',
+    //       },
+    //       {
+    //         columnNames: ['userId'],
+    //         referencedColumnNames: ['id'],
+    //         referencedTableName: 'users',
+    //       },
+    //     ],
+    //   }),
+    // );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

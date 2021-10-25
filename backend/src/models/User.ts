@@ -66,6 +66,7 @@ class User {
   })
   @JoinTable()
   department: Department[];
+
 }
 
 export default User;
