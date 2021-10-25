@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Comment, Avatar, Form, Button, List, Input } from 'antd'
+import { Comment, Avatar, Form, Button, List, Input, Tooltip } from 'antd'
+import { connect } from 'react-redux'
 import moment from 'moment'
 
 const { TextArea } = Input
@@ -7,7 +8,7 @@ const { TextArea } = Input
 const CommentList = ({ comments }) => (
   <List
     dataSource={comments}
-    header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
+    header={`${comments.length} ${comments.length > 1 ? 'respostas' : 'resposta'}`}
     itemLayout="horizontal"
     renderItem={(props) => <Comment {...props} />}
   />
@@ -20,16 +21,20 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
     </Form.Item>
     <Form.Item>
       <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
-        Add Comment
+        Enviar
       </Button>
     </Form.Item>
   </>
 )
 
-const CommentProject = () => {
-  const [comments, setComments] = useState([{}])
+const mapStateToProps = ({ user }) => ({ user })
+
+const CommentProject = ({ user }) => {
+  const [comments, setComments] = useState([])
   const [submitting, setSubmitting] = useState(false)
   const [value, setValue] = useState('')
+
+  console.log('Comentarios', comments)
 
   const handleSubmit = () => {
     if (!value) {
@@ -44,13 +49,17 @@ const CommentProject = () => {
       setComments([
         ...comments,
         {
-          author: 'Han Solo',
-          avatar: 'https://joeschmoe.io/api/v1/random',
+          author: user.name,
+          avatar: user.avatar,
           content: <p>{value}</p>,
-          datetime: moment().fromNow(),
+          datetime: (
+            <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+              <span>{moment().fromNow()}</span>
+            </Tooltip>
+          ),
         },
       ])
-    }, 1000)
+    }, 100)
 
     setSubmitting(false)
   }
@@ -63,12 +72,7 @@ const CommentProject = () => {
     <div>
       {comments.length > 0 && <CommentList comments={comments} />}
       <Comment
-        avatar={
-          <Avatar
-            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            alt="Han Solo"
-          />
-        }
+        avatar={<Avatar src={user.avatar} alt="Foto do Avatar" />}
         content={
           <Editor
             onChange={handleChange}
@@ -83,66 +87,4 @@ const CommentProject = () => {
   )
 }
 
-export default CommentProject
-// class CommentProject extends React.Component {
-//   state = {
-//     comments: [],
-//     submitting: false,
-//     value: '',
-//   };
-
-//   handleSubmit = () => {
-//     if (!this.state.value) {
-//       return;
-//     }
-
-//     this.setState({
-//       submitting: true,
-//     });
-
-//     setTimeout(() => {
-//       this.setState({
-//         submitting: false,
-//         value: '',
-//         comments: [
-//           ...this.state.comments,
-//           {
-//             author: 'Han Solo',
-//             avatar: 'https://joeschmoe.io/api/v1/random',
-//             content: <p>{this.state.value}</p>,
-//             datetime: moment().fromNow(),
-//           },
-//         ],
-//       });
-//     }, 1000);
-//   };
-
-//   handleChange = e => {
-//     this.setState({
-//       value: e.target.value,
-//     });
-//   };
-
-//   render() {
-//     const { comments, submitting, value } = this.state;
-
-//     return (
-//       <>
-//         {comments.length > 0 && <CommentList comments={comments} />}
-//         <Comment
-//           avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
-//           content={
-//             <Editor
-//               onChange={this.handleChange}
-//               onSubmit={this.handleSubmit}
-//               submitting={submitting}
-//               value={value}
-//             />
-//           }
-//         />
-//       </>
-//     );
-//   }
-// }
-
-// export default CommentProject
+export default connect(mapStateToProps)(CommentProject)
