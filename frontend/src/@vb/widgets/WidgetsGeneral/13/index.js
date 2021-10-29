@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Menu, Dropdown } from 'antd'
+import { Menu, Dropdown, Button } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 import { getProjectsData } from 'services/projects'
 import { useHistory } from 'react-router-dom'
 import moment from 'moment'
@@ -97,20 +98,20 @@ const General13 = () => {
               <div className="card border-0">
                 <div className="card-header border-bottom-0">
                   <div className="d-flex mb-1">
-                    <div className="text-dark text-uppercase font-weight-bold mr-auto">
+                    <div className="text-dark text-uppercase font-weight-bold mr-auto mt-2">
                       Data de inicio
                     </div>
-                    <div className="text-gray-6">Data de Encerramento</div>
+                    <div className="text-dark text-uppercase font-weight-bold mt-2">Data de Encerramento</div>
                   </div>
                   <div className="d-flex mb-2">
-                    <div className="text-success font-size-24 font-weight-bold mr-auto">
+                    <div className="text-success font-size-22 font-weight-bold mr-auto">
                       {moment(project.startDate).format('YYYY-MM-DD')}
                     </div>
-                    <div className="text-gray-4 font-size-24">
+                    <div className="text-danger-1 font-size-22 font-weight-bold">
                       {moment(project.endDate).format('YYYY-MM-DD')}
                     </div>
                   </div>
-                  <div className="progress">
+                  <div className="progress mt-4">
                     <div
                       className="progress-bar bg-success"
                       style={{
@@ -138,7 +139,22 @@ const General13 = () => {
     getAllProjects()
   }, [])
 
-  return <div className="row">{projetos}</div>
+  return (
+    <div>
+      <div className="row">{projetos}</div>
+      <div className="float-xl-right mt-5">
+        <Button
+          type="primary"
+          shape="circle"
+          icon={<PlusOutlined />}
+          size="large"
+          className="mt-5"
+          onClick={() => history.push('/projects/register')}
+        />
+      </div>
+    </div>
+  )
+
 }
 
 export default General13
