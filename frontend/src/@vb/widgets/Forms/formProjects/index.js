@@ -117,15 +117,15 @@ const Form3 = () => {
                     ? (e) => {
                         setProject({
                           ...project,
-                          startDate: e[0].format('YYYY-MM-DD'),
-                          endDate: e[1].format('YYYY-MM-DD'),
+                          start_date: e[0].format('YYYY-MM-DD'),
+                          end_date: e[1].format('YYYY-MM-DD'),
                         })
                       }
                     : (e) => {
                         setData({
                           ...data,
-                          startDate: e[0].format('YYYY-MM-DD'),
-                          endDate: e[1].format('YYYY-MM-DD'),
+                          start_date: e[0].format('YYYY-MM-DD'),
+                          end_date: e[1].format('YYYY-MM-DD'),
                         })
                       }
                 }
