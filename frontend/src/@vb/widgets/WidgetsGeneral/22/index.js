@@ -7,7 +7,7 @@ const General22 = () => {
       <div className="col-lg-12">
         <div className={`${style.item} mb-xl-0 mb-3`}>
           <span className={style.icon}>
-            <i className="fe fe-home" />
+            <i className="fe fe-plus-square" />
           </span>
           <div className={style.desc}>
             <span className={style.title}>Seus Projetos</span>
