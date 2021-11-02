@@ -7,6 +7,13 @@ interface IDepartmentRequest {
   description?: string;
 }
 
+interface Update {
+  id?: number;
+  name?: string;
+  description?: string;
+}
+
+
 class DepartmentService {
   // Create new accounts
   async execute({ id, name, description}: IDepartmentRequest) {
@@ -37,8 +44,8 @@ class DepartmentService {
   }
 
   // update accounts
-  async update({ id, name, description}: IDepartmentRequest) {
-    const departmentRepository = getCustomRepository(DepartmentRepository);
+  async update(id: any, { name, description }: IDepartmentRequest) {
+   const departmentRepository = getCustomRepository(DepartmentRepository);
 
     const accountAlreadyExist = await departmentRepository.findOne({
       id
@@ -48,9 +55,10 @@ class DepartmentService {
       throw new Error('Conta nao existe');
     }
 
+
     const updateDepartment = departmentRepository.create({
-      name,
-      description
+     name,
+     description
     });
 
     await departmentRepository.update(id!, updateDepartment);

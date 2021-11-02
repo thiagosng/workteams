@@ -36,19 +36,17 @@ departmentRouter.post('/create', async (request, response) => {
 
 //Alterando um objetos existente []
 departmentRouter.post('/update/:id', async (request, response) => {
-  const { id, name, description} = request.body;
-  const createDepartmentService = new DepartmentService();
-  const department = await createDepartmentService.update({
-    id,
-    name,
-    description
-  });
+  const idParams = request.params.id;
+  const idNumber = parseInt(idParams, 10);
+  const body = {name: request.body.name, description: request.body.description }
+  const updateDepartment = new DepartmentService();
+  const department = await updateDepartment.update(idNumber, body);
   return response.json(department);
 });
 
 //Deletando um objeto existente []
 departmentRouter.delete('/delete/:id', async (request, response) => {
-  const { id } = request.params;
+  const id = request.params.id;
   const idNumber = parseInt(id, 10);
   const deleteDepartmentService = new DepartmentService();
   const department = await deleteDepartmentService.delete({
