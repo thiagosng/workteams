@@ -13,18 +13,18 @@ export default class CreateComments1635181147728 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'uuid',
+            type: 'serial',
             isPrimary: true,
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
           },
           {
             name: 'user_id',
-            type: 'uuid',
+            type: 'int',
+            isNullable: true,
           },
           {
             name: 'project_id',
-            type: 'uuid',
+            type: 'int',
+            isNullable: true,
           },
           {
             name: 'content',

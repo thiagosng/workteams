@@ -5,7 +5,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  ManyToMany,
   JoinTable,
 } from 'typeorm';
 
@@ -64,6 +63,7 @@ class User {
   @ManyToOne(type => Department, department => department.name, {
     eager: true,
   })
+
   @JoinTable()
   department: Department[];
 
