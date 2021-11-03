@@ -1,13 +1,17 @@
 import React from 'react'
 import HeadersCardHeader from '@vb/widgets/Headers/CardHeaderRegister'
 import Forms3 from '@vb/widgets/Forms/formUser'
-import './styles.css'
+import { useParams } from 'react-router-dom'
 
 const UsersRegister = () => {
+  const { id } = useParams()
+
   return (
     <div className="card">
       <div className="card-header">
-        <HeadersCardHeader data={{ title: 'Novo Usuário', route: '/users' }} />
+        <HeadersCardHeader
+          data={{ title: id ? 'Editar Usuário' : 'Novo Usuário', route: '/users' }}
+        />
       </div>
       <div className="card-body">
         <Forms3 />
