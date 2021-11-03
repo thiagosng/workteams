@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Input, Button, notification, Spin, DatePicker, Space } from 'antd'
+import { Form, Input, Button, notification, Spin, DatePicker, Space, Select } from 'antd'
 import { SmileOutlined, LoadingOutlined } from '@ant-design/icons'
 import { useHistory, useParams } from 'react-router-dom'
 import { createProject, updateProject, getProjectsDataId } from 'services/projects'
@@ -7,8 +7,13 @@ import moment from 'moment'
 
 const Form3 = () => {
   const [data, setData] = useState({
-    id: null,
-    name: null,
+    name: '',
+    description: '',
+    startDate: '',
+    endDate: '',
+    status: '',
+    duration: null,
+    active: true,
   })
   const [project, setProject] = useState({})
   const [idProject, setId] = useState(null)
@@ -16,10 +21,6 @@ const Form3 = () => {
   const { id } = useParams()
   const history = useHistory()
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
-
-  const { RangePicker } = DatePicker
-
-  const dateFormat = 'YYYY/MM/DD'
 
   const getProjectsId = async () => {
     try {
@@ -40,6 +41,10 @@ const Form3 = () => {
       const response = await updateProject(id, project)
       console.log('Response:', response)
       console.log('idBotão:', idProject)
+      if (!response.error) {
+        openNotification()
+        history.push('/projects')
+      }
     } catch (error) {
       console.log('Error:', error)
     }
@@ -47,7 +52,7 @@ const Form3 = () => {
   const openNotification = () => {
     notification.open({
       message: 'Sucesso',
-      description: 'projecto cadastrado com sucesso!',
+      description: id ? 'Projeto atualizado com sucesso!' : 'Projeto cadastrado com sucesso',
       icon: <SmileOutlined style={{ color: '#108ee9' }} />,
     })
   }
@@ -73,6 +78,21 @@ const Form3 = () => {
     console.log('***', data)
   }
 
+  const statusOptions = [
+    {
+      label: 'Em breve',
+      value: 'Em breve',
+    },
+    {
+      label: 'Em andamento',
+      value: 'Em andamento',
+    },
+    {
+      label: 'Finalizado',
+      value: 'Finalizado',
+    },
+  ]
+
   useEffect(() => {
     setIsLoading(true)
     if (id) {
@@ -86,7 +106,7 @@ const Form3 = () => {
   return !isLoading ? (
     <Form layout="vertical" onSubmit={handleSubmit}>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-12">
           <Form.Item
             name="name"
             label="Nome"
@@ -106,31 +126,72 @@ const Form3 = () => {
             />
           </Form.Item>
         </div>
-        <div className="col-md-6">
-          <Form.Item name="name" label="Insira uma data de inicio e fim">
+        <div className="col-md-3">
+          <Form.Item name="name" label="Data de inicio">
             <Space direction="vertical" size={4}>
-              <RangePicker
-                defaultValue={[moment(dateFormat), moment(dateFormat)]}
-                format={dateFormat}
+              <DatePicker
+                onChange={
+                  id
+                    ? (e) => {
+                        setProject({ ...project, startDate: moment(e).format('YYYY-MM-DD') })
+                      }
+                    : (e) => {
+                        setData({ ...data, startDate: moment(e).format('YYYY-MM-DD') })
+                      }
+                }
+              />
+            </Space>
+          </Form.Item>
+        </div>
+        <div className="col-md-3">
+          <Form.Item name="name" label="Data de fim">
+            <Space direction="vertical" size={4}>
+              <DatePicker
                 onChange={
                   id
                     ? (e) => {
                         setProject({
                           ...project,
-                          start_date: e[0].format('YYYY-MM-DD'),
-                          end_date: e[1].format('YYYY-MM-DD'),
+                          endDate: moment(e).format('YYYY-MM-DD'),
+                          duration: moment(e).diff(moment(project.startDate), 'days'),
                         })
                       }
                     : (e) => {
                         setData({
                           ...data,
-                          start_date: e[0].format('YYYY-MM-DD'),
-                          end_date: e[1].format('YYYY-MM-DD'),
+                          endDate: moment(e).format('YYYY-MM-DD'),
+                          duration: moment(e).diff(moment(data.startDate), 'days'),
                         })
                       }
                 }
               />
             </Space>
+          </Form.Item>
+        </div>
+        <div className="col-md-6">
+          <Form.Item
+            name="status"
+            label="Status"
+            rules={[{ required: true, message: 'Status do projeto' }]}
+          >
+            <Select
+              defaultValue={project.status}
+              onChange={
+                id
+                  ? (e) => {
+                      setProject({ ...project, status: e })
+                    }
+                  : (e) => {
+                      setData({ ...data, status: e })
+                    }
+              }
+            >
+              {statusOptions.map((status) => (
+                <Select.Option key={status.value} value={status.value}>
+                  {status.label}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
         </div>
         <div className="col-md-12">
