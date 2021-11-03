@@ -153,7 +153,7 @@ function TablesAntdCustomFilter() {
         return description === null ? (
           <span>Sem descrição</span>
         ) : (
-          <span>{description.substring(0, 30)} ...</span>
+          <span>{description.substring(0, 30)}</span>
         )
       },
     },
