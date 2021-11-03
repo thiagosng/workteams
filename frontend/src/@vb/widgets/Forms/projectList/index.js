@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { getProjectsDataId, deleteProject } from 'services/projects'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { Card, Avatar, Modal } from 'antd'
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-  ExclamationCircleOutlined,
-} from '@ant-design/icons'
+import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 
 const ProjectsList = () => {
   const [projects, setProjects] = useState([])
   const [isDelete, setIsDelete] = useState(false)
+  const history = useHistory()
   const { id } = useParams()
   const { Meta } = Card
 
@@ -20,6 +16,10 @@ const ProjectsList = () => {
     setProjects(projectsId)
   }
   console.log('****Projetos', projects)
+
+  const onEditProject = () => {
+    history.push(`/projects/update/${id}`)
+  }
 
   useEffect(() => {
     getProjectsId()
@@ -38,6 +38,7 @@ const ProjectsList = () => {
         try {
           deleteProject(id)
           setIsDelete(true)
+          history.push('/projects')
         } catch (error) {
           console.log(error)
         }
@@ -58,9 +59,8 @@ const ProjectsList = () => {
         />
       }
       actions={[
-        <SettingOutlined key="setting" onClick={showDeleteConfirm} />,
-        <EditOutlined key="edit" />,
-        <EllipsisOutlined key="ellipsis" />,
+        <DeleteOutlined key="setting" onClick={showDeleteConfirm} />,
+        <EditOutlined key="edit" onClick={onEditProject} />,
       ]}
     >
       <Meta
