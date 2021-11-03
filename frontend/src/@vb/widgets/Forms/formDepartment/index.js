@@ -36,6 +36,10 @@ const Form3 = () => {
       const response = await updateDepartment(id, department)
       console.log('Response:', response)
       console.log('idBotão:', idDepartment)
+      if (!response.error) {
+        openNotification()
+        history.push('/department')
+      }
     } catch (error) {
       console.log('Error:', error)
     }
@@ -43,7 +47,7 @@ const Form3 = () => {
   const openNotification = () => {
     notification.open({
       message: 'Sucesso',
-      description: 'departmento cadastrado com sucesso!',
+      description: id ? 'Departmento atualizado com sucesso!' : 'Departamento criado com sucesso',
       icon: <SmileOutlined style={{ color: '#108ee9' }} />,
     })
   }
