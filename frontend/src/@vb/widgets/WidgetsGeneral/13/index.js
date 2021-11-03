@@ -62,7 +62,7 @@ const General13 = () => {
             <div
               className={`${style.card}`}
               onClick={() => history.push(`/projects/details/${project.id}`)}
-              onKeyDown={() => alert('sad')}
+              onKeyDown={() => history.push(`/projects/details/${project.id}`)}
               role="button"
               tabIndex={0}
             >
@@ -101,7 +101,9 @@ const General13 = () => {
                     <div className="text-dark text-uppercase font-weight-bold mr-auto mt-2">
                       Data de inicio
                     </div>
-                    <div className="text-dark text-uppercase font-weight-bold mt-2">Data de Encerramento</div>
+                    <div className="text-dark text-uppercase font-weight-bold mt-2">
+                      Data de Encerramento
+                    </div>
                   </div>
                   <div className="d-flex mb-2">
                     <div className="text-success font-size-22 font-weight-bold mr-auto">
@@ -154,7 +156,6 @@ const General13 = () => {
       </div>
     </div>
   )
-
 }
 
 export default General13
