@@ -36,13 +36,10 @@ class Projects {
   @Column()
   active: boolean;
 
-  @ManyToMany(type => User)
-  @JoinTable()
-  user: User[];
-
-  // @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.projectId)
-  // @JoinTable()
-  // projectsUsers: ProjectsUsers[];
+  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.projectId, {
+    cascade: true,
+  })
+  projectsUsers: ProjectsUsers[];
 }
 
 export default Projects;

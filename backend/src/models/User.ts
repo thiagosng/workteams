@@ -6,9 +6,12 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinTable,
+  ManyToMany,
+  OneToMany,
 } from 'typeorm';
 
 import Department from './Department';
+import ProjectsUsers from './ProjectsUsers';
 
 @Entity('users')
 class User {
@@ -24,7 +27,7 @@ class User {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @Column()
@@ -63,10 +66,13 @@ class User {
   @ManyToOne(type => Department, department => department.name, {
     eager: true,
   })
-
   @JoinTable()
   department: Department[];
 
+  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.userId, {
+    cascade: true,
+  })
+  projectsUsers!: ProjectsUsers[];
 }
 
 export default User;

@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   JoinTable,
+  ManyToOne,
 } from 'typeorm';
 
 import User from './User';
@@ -13,21 +14,20 @@ import Projects from './Projects';
 class ProjectsUsers {
   // @ManyToOne(type => User, user => user.id)
   // user: User;
-  @OneToMany(() => User, user => user.id)
-  @JoinTable()
-  user: User[];
 
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   projectId: number;
 
-  // @ManyToOne(type => Projects, projects => projects.id, {
-  //   eager: true,
-  // })
-  // @JoinTable()
-  // projects: Projects[];
-
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   userId: number;
+
+  @ManyToOne(type => User, user => user.projectsUsers, { onDelete: 'CASCADE' })
+  user: User;
+
+  @ManyToOne(type => Projects, projects => projects.projectsUsers, {
+    onDelete: 'CASCADE',
+  })
+  projects: Projects;
 }
 
 export default ProjectsUsers;
