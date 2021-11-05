@@ -1,0 +1,6 @@
+perceba que no diagrama gerado pela migrations na imagem db.v1
+a tabela pivo gerada para a relação manyToMany entre users e projects
+tem as duas primary keys e mais duas colunas, isso foi gerado por conta do name informado no JoinColumn 
+
+vc consegue ver as propriedades na imagem v1.entity-ProjectsUsers
+onde no name informado no joinColumn tem users_id e projects_id

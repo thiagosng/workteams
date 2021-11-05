@@ -1,0 +1,2 @@
+agora a tabela pivo não tem mais as colunas adicionais - imagem db.v2
+isso por que o "name" informado no joinColumn é o mesmo das primary keys já declaradas a cima - imagem v2.entity-ProjectUsers

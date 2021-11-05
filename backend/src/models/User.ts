@@ -8,6 +8,7 @@ import {
   JoinTable,
   OneToMany,
   ManyToMany,
+  JoinColumn,
 } from 'typeorm';
 
 import Department from './Department';
@@ -64,18 +65,33 @@ class User {
   @Column()
   createdBy: number;
 
-  @ManyToOne(type => Department, department => department.name, {
+  /**
+   * Por que vc estava apontando para o name?
+   */
+  /**
+   * Como é um relacionamento ManyToOne, não precisa ser um Department[]
+   */
+  /**
+   * o JoinTable é usado apenas para relações ManyToMany
+   */
+  /**
+   * JoinColumn:
+   * o JoinColumn tem como propriedade "name" e "referencedColumnName"
+   * o "name" vai ser o nome da coluna criada para a foreign key
+   * e o "referencedColumnName" precisa ser a primary key da tabela q vc pretende fazer o relacionamento
+   */
+  @ManyToOne(() => Department, department => department.user, {
     eager: true,
   })
-  @JoinTable()
-  department: Department[];
+  @JoinColumn({ name: 'departmentId', referencedColumnName: 'id' })
+  department: Department;
 
   // @ManyToMany(type => Projects, projects => projects.users, {
   //   eager: true,
   // })
   // projects: Projects[];
 
-  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.users, {
+  @OneToMany(() => ProjectsUsers, projectsUsers => projectsUsers.users, {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];

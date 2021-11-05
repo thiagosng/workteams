@@ -38,7 +38,7 @@ class Projects {
   @Column()
   active: boolean;
 
-  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.projects, {
+  @OneToMany(() => ProjectsUsers, projectsUsers => projectsUsers.projects, {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];

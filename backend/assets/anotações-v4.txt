@@ -1,0 +1,5 @@
+eu só uso o @ManyToMany quando preciso apenas das primary keys na tabela pivo
+quando preciso de novas colunas (que é oq mais acontece) como na imagem v4.db eu faço a relação utilizando @OneToMany e @ManyToOne - imagem v4.entity-ProjectsUsers
+
+a desvantagem de utilizar dessa maneira é que os find ficam mais complexo, também são simples, mas não da apenas para fazer um relations: ['relação']
+é necessario utilizar os joins
