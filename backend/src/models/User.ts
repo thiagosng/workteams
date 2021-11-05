@@ -75,7 +75,7 @@ class User {
   // })
   // projects: Projects[];
 
-  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.user, {
+  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.users, {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];

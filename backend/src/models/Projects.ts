@@ -6,6 +6,7 @@ import {
   JoinTable,
   ManyToMany,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 
 import User from './User';

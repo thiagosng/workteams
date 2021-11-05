@@ -9,7 +9,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import User from './User';
+import Users from './User';
 import Projects from './Projects';
 
 @Entity('projects_users_users')
@@ -20,14 +20,16 @@ class ProjectsUsers {
   @PrimaryGeneratedColumn()
   userId: number;
 
-  @ManyToOne(type => User, user => user.projectsUsers, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
-  user: User;
+  @ManyToOne(type => Users, users => users.projectsUsers, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'users_id', referencedColumnName: 'id' })
+  users: Users;
 
   @ManyToOne(type => Projects, projects => projects.projectsUsers, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'projectId', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'projects_id', referencedColumnName: 'id' })
   projects: Projects;
 }
 
