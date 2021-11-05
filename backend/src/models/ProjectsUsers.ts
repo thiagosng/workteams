@@ -32,13 +32,13 @@ class ProjectsUsers {
   @ManyToOne(() => Users, users => users.projectsUsers, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   users: Users;
 
   @ManyToOne(() => Projects, projects => projects.projectsUsers, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'projectId', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'project_id', referencedColumnName: 'id' })
   projects: Projects;
 }
 

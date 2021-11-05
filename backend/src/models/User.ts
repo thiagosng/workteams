@@ -83,7 +83,7 @@ class User {
   @ManyToOne(() => Department, department => department.user, {
     eager: true,
   })
-  @JoinColumn({ name: 'departmentId', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'department_id', referencedColumnName: 'id' })
   department: Department;
 
   // @ManyToMany(type => Projects, projects => projects.users, {
