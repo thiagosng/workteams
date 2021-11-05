@@ -7,6 +7,7 @@ import {
   ManyToMany,
   OneToMany,
 } from 'typeorm';
+
 import User from './User';
 import ProjectsUsers from './ProjectsUsers';
 
@@ -36,10 +37,14 @@ class Projects {
   @Column()
   active: boolean;
 
-  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.projectId, {
+  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.projects, {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];
+
+  @ManyToMany(type => User, user => user.projects)
+  @JoinTable()
+  users: User[];
 }
 
 export default Projects;

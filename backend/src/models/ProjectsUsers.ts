@@ -5,6 +5,7 @@ import {
   OneToMany,
   JoinTable,
   ManyToOne,
+  ManyToMany,
 } from 'typeorm';
 
 import User from './User';
@@ -12,19 +13,16 @@ import Projects from './Projects';
 
 @Entity('projects_users_users')
 class ProjectsUsers {
-  // @ManyToOne(type => User, user => user.id)
-  // user: User;
-
   @PrimaryGeneratedColumn()
   projectId: number;
 
   @PrimaryGeneratedColumn()
   userId: number;
 
-  @ManyToOne(type => User, user => user.projectsUsers, { onDelete: 'CASCADE' })
+  @ManyToOne(type => User, user => user.projects, { onDelete: 'CASCADE' })
   user: User;
 
-  @ManyToOne(type => Projects, projects => projects.projectsUsers, {
+  @ManyToOne(type => Projects, projects => projects.users, {
     onDelete: 'CASCADE',
   })
   projects: Projects;

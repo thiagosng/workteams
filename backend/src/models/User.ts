@@ -6,11 +6,12 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinTable,
-  ManyToMany,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 
 import Department from './Department';
+import Projects from './Projects';
 import ProjectsUsers from './ProjectsUsers';
 
 @Entity('users')
@@ -69,10 +70,15 @@ class User {
   @JoinTable()
   department: Department[];
 
-  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.userId, {
+  @ManyToMany(type => Projects, projects => projects.users, {
+    eager: true,
+  })
+  projects: Projects[];
+
+  @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.user, {
     cascade: true,
   })
-  projectsUsers!: ProjectsUsers[];
+  projectsUsers: ProjectsUsers[];
 }
 
 export default User;
