@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 
 import './database';
 import routes from './routes';
