@@ -6,6 +6,7 @@ import {
   JoinTable,
   ManyToOne,
   ManyToMany,
+  JoinColumn,
 } from 'typeorm';
 
 import User from './User';
@@ -19,12 +20,14 @@ class ProjectsUsers {
   @PrimaryGeneratedColumn()
   userId: number;
 
-  @ManyToOne(type => User, user => user.projects, { onDelete: 'CASCADE' })
+  @ManyToOne(type => User, user => user.projectsUsers, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
   user: User;
 
-  @ManyToOne(type => Projects, projects => projects.users, {
+  @ManyToOne(type => Projects, projects => projects.projectsUsers, {
     onDelete: 'CASCADE',
   })
+  @JoinColumn({ name: 'projectId', referencedColumnName: 'id' })
   projects: Projects;
 }
 

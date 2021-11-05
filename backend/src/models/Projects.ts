@@ -42,9 +42,9 @@ class Projects {
   })
   projectsUsers: ProjectsUsers[];
 
-  @ManyToMany(type => User, user => user.projects)
-  @JoinTable()
-  users: User[];
+  // @ManyToMany(type => User, user => user.projects)
+  // @JoinTable()
+  // users: User[];
 }
 
 export default Projects;

@@ -70,10 +70,10 @@ class User {
   @JoinTable()
   department: Department[];
 
-  @ManyToMany(type => Projects, projects => projects.users, {
-    eager: true,
-  })
-  projects: Projects[];
+  // @ManyToMany(type => Projects, projects => projects.users, {
+  //   eager: true,
+  // })
+  // projects: Projects[];
 
   @OneToMany(type => ProjectsUsers, projectsUsers => projectsUsers.user, {
     cascade: true,
