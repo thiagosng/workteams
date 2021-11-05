@@ -8,6 +8,10 @@ import routes from './routes';
 
 const app = express();
 
+/**
+ * O express já tem o urlencoded e o json como modulo nativo
+ */
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());

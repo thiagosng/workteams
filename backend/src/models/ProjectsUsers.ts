@@ -20,16 +20,25 @@ class ProjectsUsers {
   @PrimaryGeneratedColumn()
   userId: number;
 
-  @ManyToOne(type => Users, users => users.projectsUsers, {
+  @Column()
+  columnX: string;
+
+  @Column()
+  columnY: string;
+
+  @Column()
+  columnZ: string;
+
+  @ManyToOne(() => Users, users => users.projectsUsers, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'users_id', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
   users: Users;
 
-  @ManyToOne(type => Projects, projects => projects.projectsUsers, {
+  @ManyToOne(() => Projects, projects => projects.projectsUsers, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'projects_id', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'projectId', referencedColumnName: 'id' })
   projects: Projects;
 }
 

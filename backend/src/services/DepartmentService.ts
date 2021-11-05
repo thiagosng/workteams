@@ -13,19 +13,17 @@ interface Update {
   description?: string;
 }
 
-
 class DepartmentService {
   // Create new accounts
-  async execute({ id, name, description}: IDepartmentRequest) {
+  async execute({ id, name, description }: IDepartmentRequest) {
     const departmentRepository = getCustomRepository(DepartmentRepository);
-    //Verifica os campos id e name que não podem ser null
+    // Verifica os campos id e name que não podem ser null
     if (!id && !name) {
       throw new Error('ID and Name is required');
     }
 
-
     const departmentAlreadyExists = await departmentRepository.findOne({
-      id
+      id,
     });
 
     if (departmentAlreadyExists) {
@@ -35,7 +33,7 @@ class DepartmentService {
     const department = departmentRepository.create({
       id,
       name,
-      description
+      description,
     });
 
     await departmentRepository.save(department);
@@ -45,20 +43,19 @@ class DepartmentService {
 
   // update accounts
   async update(id: any, { name, description }: IDepartmentRequest) {
-   const departmentRepository = getCustomRepository(DepartmentRepository);
+    const departmentRepository = getCustomRepository(DepartmentRepository);
 
     const accountAlreadyExist = await departmentRepository.findOne({
-      id
+      id,
     });
 
     if (!accountAlreadyExist) {
       throw new Error('Conta nao existe');
     }
 
-
     const updateDepartment = departmentRepository.create({
-     name,
-     description
+      name,
+      description,
     });
 
     await departmentRepository.update(id!, updateDepartment);

@@ -1,0 +1,10 @@
+note que vc tem o mesmo resultado mas a diferença é a forma que foi feito o relacionamento nas entidades - imagem v3.db
+
+na v1 e v2 dos prints anteriores, os relacionamentos foram feitos utilizando @OneToMany e @ManyToOne
+nessa v3 o relacionamento foi feito utilizando o @ManyToMany - imagens v3.entity-Projects e v3.entity-User 
+
+perceba também que o @JoinTable está sendo usando em apenas uma das entidades, não há necessidade de colocar o JoinTable nas duas entidades
+
+A tabela pivo gerada na relação feita dessa forma é criada pelo proprio typeorm, dessa maneira, vc nem precisa criar uma nova entidade para mapear ela - imagem v3.models
+
+a vantagem de utilizar dessa forma é que os finds ficam bem simples, basta fazer o relations: ['relação']
