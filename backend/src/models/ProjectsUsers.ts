@@ -4,30 +4,42 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   JoinTable,
+  ManyToOne,
+  ManyToMany,
+  JoinColumn,
 } from 'typeorm';
 
-import User from './User';
+import Users from './User';
 import Projects from './Projects';
 
 @Entity('projects_users_users')
 class ProjectsUsers {
-  // @ManyToOne(type => User, user => user.id)
-  // user: User;
-  @OneToMany(() => User, user => user.id)
-  @JoinTable()
-  user: User[];
-
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   projectId: number;
 
-  // @ManyToOne(type => Projects, projects => projects.id, {
-  //   eager: true,
-  // })
-  // @JoinTable()
-  // projects: Projects[];
-
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   userId: number;
+
+  @Column()
+  columnX: string;
+
+  @Column()
+  columnY: string;
+
+  @Column()
+  columnZ: string;
+
+  @ManyToOne(() => Users, users => users.projectsUsers, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  users: Users;
+
+  @ManyToOne(() => Projects, projects => projects.projectsUsers, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'project_id', referencedColumnName: 'id' })
+  projects: Projects;
 }
 
 export default ProjectsUsers;

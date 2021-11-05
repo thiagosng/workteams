@@ -1,0 +1,9 @@
+
+** ler por ultimo
+
+Sempre que vc mudar os decorators de relação é necessario fazer uma nova migrations e rodar novamente
+
+o problema que estava acontecendo com vc era a relação bidirecional que vc estava apontando para uma propriedade qualquer e não para a propriedade que referenciava a entidade
+
+se ocorrer algum problema após td isso então é bem provavel que vc precise utilizar os joins na hr de fazer o find
+se tiver alguma duvida em como utilizar os joins eu te passo alguns exemplos

@@ -8,16 +8,29 @@ const projectsUsersRouter = Router();
 
 projectsUsersRouter.get('/', async (request, response) => {
   const projectsUsersRepository = getCustomRepository(ProjectsUsersRepository);
-  const projectsUsers = await projectsUsersRepository.find();
+  const projectsUsers = await projectsUsersRepository.find({
+    relations: ['users', 'projects'],
+  });
 
   return response.json(projectsUsers);
 });
 
-projectsUsersRouter.get('/:id', async (request, response) => {
+projectsUsersRouter.get('/users/:id', async (request, response) => {
   const projectsUsersRepository = getCustomRepository(ProjectsUsersRepository);
-  const projectsUsers = await projectsUsersRepository.findOne(
-    request.params.id,
-  );
+  const projectsUsers = await projectsUsersRepository.findOne({
+    where: { projectId: request.params.id },
+    relations: ['users', 'projects'],
+  });
+
+  return response.json(projectsUsers);
+});
+
+projectsUsersRouter.get('/projects/:id', async (request, response) => {
+  const projectsUsersRepository = getCustomRepository(ProjectsUsersRepository);
+  const projectsUsers = await projectsUsersRepository.findOne({
+    where: { projectId: request.params.id },
+    relations: ['users', 'projects'],
+  });
 
   return response.json(projectsUsers);
 });
