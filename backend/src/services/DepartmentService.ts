@@ -7,12 +7,6 @@ interface IDepartmentRequest {
   description?: string;
 }
 
-interface Update {
-  id?: number;
-  name?: string;
-  description?: string;
-}
-
 class DepartmentService {
   // Create new accounts
   async execute({ id, name, description }: IDepartmentRequest) {

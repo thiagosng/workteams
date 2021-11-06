@@ -37,9 +37,9 @@ projectsUsersRouter.get('/projects/:id', async (request, response) => {
 
 projectsUsersRouter.post('/create', async (request, response) => {
   const { userId, projectId } = request.body;
-
+  console.log(request.body);
   const createProjectsUsersService = new ProjectsUsersService();
-  const projectsUsers = await createProjectsUsersService.create({
+  const projectsUsers = await createProjectsUsersService.execute({
     userId,
     projectId,
   });

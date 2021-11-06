@@ -8,7 +8,7 @@ interface IProjectsUsersRequest {
 
 class ProjectsUserService {
   // Create new accounts
-  async create({ userId, projectId }: IProjectsUsersRequest) {
+  async execute({ userId, projectId }: IProjectsUsersRequest) {
     const projectsUsersRepository = getCustomRepository(
       ProjectsUsersRepository,
     );
@@ -19,6 +19,7 @@ class ProjectsUserService {
 
     const projectstAlreadyExists = await projectsUsersRepository.findOne({
       projectId,
+      userId,
     });
 
     if (projectstAlreadyExists) {

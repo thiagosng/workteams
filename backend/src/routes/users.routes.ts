@@ -45,7 +45,7 @@ usersRouter.post('/create', async (request, response) => {
     active,
     createdBy,
   } = request.body;
-
+  console.log(request.body);
   const createUserService = new UserService();
   const user = await createUserService.create({
     profileId,

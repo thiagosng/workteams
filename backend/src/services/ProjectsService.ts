@@ -8,7 +8,6 @@ interface IProjectsRequest {
   startDate?: Date;
   endDate?: Date;
   duration?: string;
-  userId?: number;
   status?: string;
   active?: boolean;
 }
