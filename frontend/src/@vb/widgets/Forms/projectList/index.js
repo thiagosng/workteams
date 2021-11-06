@@ -3,9 +3,11 @@ import { getProjectsDataId, deleteProject } from 'services/projects'
 import { useParams, useHistory } from 'react-router-dom'
 import { Card, Avatar, Modal } from 'antd'
 import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
+import { getProjectsUsersDataId } from 'services/projectsUsers'
 
 const ProjectsList = () => {
   const [projects, setProjects] = useState([])
+  const [projectUser, setProjectUser] = useState([])
   const [isDelete, setIsDelete] = useState(false)
   const history = useHistory()
   const { id } = useParams()
@@ -21,8 +23,19 @@ const ProjectsList = () => {
     history.push(`/projects/update/${id}`)
   }
 
+  const getProjectsUsersId = async () => {
+    try {
+      const projectsUsers = await getProjectsUsersDataId(id)
+      setProjectUser(projectsUsers)
+      console.log('ResponseClientsID:', projectsUsers)
+    } catch (error) {
+      console.log('Error:', error)
+    }
+  }
+
   useEffect(() => {
     getProjectsId()
+    getProjectsUsersId()
     setIsDelete(false)
   }, [isDelete])
 
@@ -48,33 +61,37 @@ const ProjectsList = () => {
       },
     })
   }
-
+  console.log('****Projetos', projectUser)
   return (
-    <Card
-      style={{ width: 300 }}
-      cover={
-        <img
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+    <div>
+      <Card
+        style={{ width: 300 }}
+        cover={
+          <img
+            alt="example"
+            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+          />
+        }
+        actions={[
+          <DeleteOutlined key="setting" onClick={showDeleteConfirm} />,
+          <EditOutlined key="edit" onClick={onEditProject} />,
+        ]}
+      >
+        <Meta
+          avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+          title={projects.name}
+          description={projects.description}
         />
-      }
-      actions={[
-        <DeleteOutlined key="setting" onClick={showDeleteConfirm} />,
-        <EditOutlined key="edit" onClick={onEditProject} />,
-      ]}
-    >
-      <Meta
-        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-        title={projects.name}
-        description={projects.description}
-      />
-    </Card>
-    // <div>
-    //   <h1>{projects.name}</h1>
-    //   <div className="card-body">
-    //     <h3>{projects.description}</h3>
-    //   </div>
-    // </div>
+      </Card>
+      <div>
+        <h1>Membros do Projeto</h1>
+        {projectUser.map((project) => (
+          <div key={project.id}>
+            <p>{project.users.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
