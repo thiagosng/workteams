@@ -5,6 +5,7 @@ import React from 'react'
 // import TablesAntd3 from '@vb/widgets/TablesAntd/listaUsuarios'
 import WidgetsGeneral from '@vb/widgets/WidgetsGeneral/23'
 import WidgetsGeneral7 from '@vb/widgets/WidgetsGeneral/7'
+import WidgetsGeneral8 from '@vb/widgets/WidgetsGeneral/8'
 
 const UserProfile = () => {
   return (
@@ -28,7 +29,7 @@ const UserProfile = () => {
           <div>
             <div className="card">
               <div className="card-body">
-                <WidgetsGeneral7 />
+                <WidgetsGeneral8 />
               </div>
             </div>
           </div>
