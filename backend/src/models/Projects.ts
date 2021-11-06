@@ -3,13 +3,9 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  JoinTable,
-  ManyToMany,
   OneToMany,
-  JoinColumn,
 } from 'typeorm';
 
-import User from './User';
 import ProjectsUsers from './ProjectsUsers';
 
 @Entity('projects')
@@ -42,10 +38,6 @@ class Projects {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];
-
-  // @ManyToMany(type => User, user => user.projects)
-  // @JoinTable()
-  // users: User[];
 }
 
 export default Projects;

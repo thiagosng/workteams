@@ -29,7 +29,7 @@ class User {
   @Column()
   email: string;
 
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @Column()
@@ -65,31 +65,11 @@ class User {
   @Column()
   createdBy: number;
 
-  /**
-   * Por que vc estava apontando para o name?
-   */
-  /**
-   * Como é um relacionamento ManyToOne, não precisa ser um Department[]
-   */
-  /**
-   * o JoinTable é usado apenas para relações ManyToMany
-   */
-  /**
-   * JoinColumn:
-   * o JoinColumn tem como propriedade "name" e "referencedColumnName"
-   * o "name" vai ser o nome da coluna criada para a foreign key
-   * e o "referencedColumnName" precisa ser a primary key da tabela q vc pretende fazer o relacionamento
-   */
   @ManyToOne(() => Department, department => department.user, {
     eager: true,
   })
   @JoinColumn({ name: 'department_id', referencedColumnName: 'id' })
   department: Department;
-
-  // @ManyToMany(type => Projects, projects => projects.users, {
-  //   eager: true,
-  // })
-  // projects: Projects[];
 
   @OneToMany(() => ProjectsUsers, projectsUsers => projectsUsers.users, {
     cascade: true,

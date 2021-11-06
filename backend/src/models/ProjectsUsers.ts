@@ -1,13 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  JoinTable,
-  ManyToOne,
-  ManyToMany,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 import Users from './User';
 import Projects from './Projects';
@@ -19,15 +10,6 @@ class ProjectsUsers {
 
   @PrimaryGeneratedColumn()
   userId: number;
-
-  @Column()
-  columnX: string;
-
-  @Column()
-  columnY: string;
-
-  @Column()
-  columnZ: string;
 
   @ManyToOne(() => Users, users => users.projectsUsers, {
     onDelete: 'CASCADE',
