@@ -17,8 +17,8 @@ projectsUsersRouter.get('/', async (request, response) => {
 
 projectsUsersRouter.get('/users/:id', async (request, response) => {
   const projectsUsersRepository = getCustomRepository(ProjectsUsersRepository);
-  const projectsUsers = await projectsUsersRepository.findOne({
-    where: { projectId: request.params.id },
+  const projectsUsers = await projectsUsersRepository.find({
+    where: { userId: request.params.id },
     relations: ['users', 'projects'],
   });
 
@@ -27,7 +27,7 @@ projectsUsersRouter.get('/users/:id', async (request, response) => {
 
 projectsUsersRouter.get('/projects/:id', async (request, response) => {
   const projectsUsersRepository = getCustomRepository(ProjectsUsersRepository);
-  const projectsUsers = await projectsUsersRepository.findOne({
+  const projectsUsers = await projectsUsersRepository.find({
     where: { projectId: request.params.id },
     relations: ['users', 'projects'],
   });
@@ -39,7 +39,7 @@ projectsUsersRouter.post('/create', async (request, response) => {
   const { userId, projectId } = request.body;
 
   const createProjectsUsersService = new ProjectsUsersService();
-  const projectsUsers = await createProjectsUsersService.execute({
+  const projectsUsers = await createProjectsUsersService.create({
     userId,
     projectId,
   });
