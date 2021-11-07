@@ -4,11 +4,13 @@ import { useParams, useHistory } from 'react-router-dom'
 import { Card, Avatar, Modal } from 'antd'
 import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 import { getProjectsUsersDataId } from 'services/projectsUsers'
+import FormAddUsers from '../FormAddUser'
 
 const ProjectsList = () => {
   const [projects, setProjects] = useState([])
   const [projectUser, setProjectUser] = useState([])
   const [isDelete, setIsDelete] = useState(false)
+
   const history = useHistory()
   const { id } = useParams()
   const { Meta } = Card
@@ -83,14 +85,17 @@ const ProjectsList = () => {
           description={projects.description}
         />
       </Card>
-      <div>
-        <h1>Membros do Projeto</h1>
-        {projectUser.map((project) => (
-          <div key={project.id}>
-            <p>{project.users.name}</p>
-          </div>
-        ))}
-      </div>
+
+      <Card title="Membros do Projeto" style={{ width: 300, marginTop: 10 }}>
+        <div>
+          {projectUser.map((project) => (
+            <div key={project.id}>
+              <p>{project.users.name}</p>
+            </div>
+          ))}
+        </div>
+        <FormAddUsers />
+      </Card>
     </div>
   )
 }
