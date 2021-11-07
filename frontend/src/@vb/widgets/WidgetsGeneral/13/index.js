@@ -51,10 +51,6 @@ const General13 = () => {
 
     const percenteDate = 100 - (diferenceDays - diffDays) / (diferenceDays / 100)
 
-    console.log('A', diferenceTime)
-    console.log('B', diferenceDays)
-    console.log('C', percenteDate)
-    console.log('D', diffDays)
     return (
       <div className="col-lg-4 col-md-12">
         <div>
