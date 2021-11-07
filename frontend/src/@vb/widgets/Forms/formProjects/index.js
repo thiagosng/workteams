@@ -3,8 +3,6 @@ import { Form, Input, Button, notification, Spin, DatePicker, Space, Select } fr
 import { SmileOutlined, LoadingOutlined } from '@ant-design/icons'
 import { useHistory, useParams } from 'react-router-dom'
 import { createProject, updateProject, getProjectsDataId } from 'services/projects'
-// import { getProjectsUsersDataId } from 'services/projectsUsers'
-
 import moment from 'moment'
 
 const Form3 = () => {
@@ -18,7 +16,6 @@ const Form3 = () => {
     active: true,
   })
   const [project, setProject] = useState({})
-  // const [ projectUser, setProjectUser ] = useState([])
   const [idProject, setId] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const { id } = useParams()
@@ -40,15 +37,6 @@ const Form3 = () => {
     }
   }
 
-  // const getProjectsUsersId = async () => {
-  //   try {
-  //     const projectsUsers = await getProjectsUsersDataId(id)
-  //     setProjectUser(projectsUsers)
-  //     console.log('ResponseClientsID:', projectsUsers)
-  //   } catch (error) {
-  //     console.log('Error:', error)
-  //   }
-  // }
   const editProject = async () => {
     try {
       const response = await updateProject(id, project)
@@ -223,6 +211,7 @@ const Form3 = () => {
             />
           </Form.Item>
         </div>
+
         <div className="col-md-2">
           <Button type="submit" className="btn btn-success" onClick={id ? editProject : newProject}>
             Salvar
