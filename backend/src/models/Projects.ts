@@ -4,9 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 
 import ProjectsUsers from './ProjectsUsers';
+import Comment from './Comment';
 
 @Entity('projects')
 class Projects {
@@ -38,6 +40,9 @@ class Projects {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];
+
+  @ManyToMany(() => Comment, comment => comment.IdProjectsComment)
+    comments: Comment[];
 }
 
 export default Projects;

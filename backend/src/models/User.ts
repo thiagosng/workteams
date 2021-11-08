@@ -14,6 +14,7 @@ import {
 import Department from './Department';
 import Projects from './Projects';
 import ProjectsUsers from './ProjectsUsers';
+import Comment from './Comment';
 
 @Entity('users')
 class User {
@@ -75,6 +76,9 @@ class User {
     cascade: true,
   })
   projectsUsers: ProjectsUsers[];
+
+  @ManyToMany(() => Comment, comment => comment.idUserComment)
+    comments: Comment[];
 }
 
 export default User;
