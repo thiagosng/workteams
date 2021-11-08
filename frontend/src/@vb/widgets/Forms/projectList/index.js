@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getProjectsDataId, deleteProject } from 'services/projects'
 import { useParams, useHistory } from 'react-router-dom'
-import { Card, Avatar, Modal } from 'antd'
+import { Card, Modal } from 'antd'
 import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 import { getProjectsUsersDataId } from 'services/projectsUsers'
 import FormAddUsers from '../FormAddUser'
@@ -80,9 +80,9 @@ const ProjectsList = () => {
         ]}
       >
         <Meta
-          avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
           title={projects.name}
           description={projects.description}
+          style={{ textAlign: 'center' }}
         />
       </Card>
 
