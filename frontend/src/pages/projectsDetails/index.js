@@ -1,6 +1,7 @@
 import React from 'react'
 import ProjectList from '@vb/widgets/Forms/projectList'
 import CommentProject from '@vb/widgets/WidgetsGeneral/Comments'
+import PainelDnd from '@vb/components/PainelDnd'
 
 const ProjectsDetails = () => {
   return (
@@ -10,6 +11,9 @@ const ProjectsDetails = () => {
           <ProjectList />
         </div>
         <div className="col-md-6">
+          <div>
+            <PainelDnd />
+          </div>
           <CommentProject />
         </div>
       </div>

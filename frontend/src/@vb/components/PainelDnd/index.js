@@ -15,15 +15,15 @@ const itemsFromBackend = [
 
 const columnsFromBackend = {
   1: {
-    name: 'Cliente em Potencial',
+    name: 'To Do',
     items: itemsFromBackend,
   },
   2: {
-    name: 'Dados Confirmados',
+    name: 'In Progress',
     items: [],
   },
   3: {
-    name: 'Reunião Agendada',
+    name: 'Done',
     items: [],
   },
 }
@@ -78,15 +78,15 @@ function PainelDnd() {
     setLeads(JSON.parse(localStorage.getItem('lead')))
     setColumns([
       {
-        name: 'Cliente em Potencial',
+        name: 'To Do',
         items: itemsFromBackend,
       },
       {
-        name: 'Dados Confirmados',
+        name: 'In Progress',
         items: [],
       },
       {
-        name: 'Reunião Agendada',
+        name: 'Done',
         items: [],
       },
     ])
