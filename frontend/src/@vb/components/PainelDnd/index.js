@@ -97,7 +97,7 @@ function PainelDnd() {
     <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
       <div className="col-md-3">
         <Button className="btn btn-primary btn-block" onClick={(e) => newLead(e)}>
-          Novo Lead (+)
+          Adicionar Card (+)
         </Button>
       </div>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
@@ -168,7 +168,7 @@ function PainelDnd() {
       <h1>Nenhum lead cadastrado...</h1>
       <span>
         <Button className="btn btn-primary btn-block" onClick={(e) => newLead(e)}>
-          Novo Lead (+)
+          Adicionar Card (+)
         </Button>
       </span>
     </div>

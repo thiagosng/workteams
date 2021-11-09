@@ -63,7 +63,7 @@ const General8 = () => {
                 </p>
                 <p className="text-uppercase text-muted mb-3">{project.projects.status}</p>
                 <p className="mb-4">{project.projects.description}</p>
-                <a className="btn btn-outline-primary">View history</a>
+                <a className="btn btn-outline-primary">Ver projeto</a>
               </div>
             ))}
           </tbody>
