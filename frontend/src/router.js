@@ -13,6 +13,11 @@ const routes = [
     Component: lazy(() => import('pages/dashboard')),
     exact: true,
   },
+  {
+    path: '/dashboard/create-post',
+    Component: lazy(() => import('pages/postsCreate')),
+    exact: true,
+  },
   // ROTAS DE USUÁRIOS
   {
     path: '/users',

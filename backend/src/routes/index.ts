@@ -7,6 +7,7 @@ import departmentRouter from './Department.routes';
 import projectsRouter from './Projects.routes';
 import projectsUsersRouter from './ProjectsUsers.routes';
 import TodoListRouter from './TodoList.routes';
+import PostsRouter from './Posts.routes';
 
 const routes = Router();
 
@@ -18,5 +19,6 @@ routes.use('/department', departmentRouter);
 routes.use('/projects', projectsRouter);
 routes.use('/projectsUsers', projectsUsersRouter);
 routes.use('/todoList', TodoListRouter);
+routes.use('/posts', PostsRouter);
 
 export default routes;
