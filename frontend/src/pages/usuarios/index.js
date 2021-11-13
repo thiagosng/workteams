@@ -50,7 +50,7 @@ const Users = () => {
   ) : (
     // no permission
 
-    <h1>FODASE</h1>
+    <h1>Carregando...</h1>
   )
 }
 

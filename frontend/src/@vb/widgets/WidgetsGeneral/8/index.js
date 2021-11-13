@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { getUsersDataId } from 'services/usuarios'
 import { getUsersProjectsDataId } from 'services/projectsUsers'
+import { useHistory } from 'react-router-dom'
 import store from 'store'
+import { Button } from 'antd'
 
 const General8 = () => {
   const [users, setUsers] = useState({})
   const [projectUser, setProjectUser] = useState([])
   const [loading, setLoading] = useState(true)
-
+  const history = useHistory()
   const id = store.get('id')
 
   const getUsers = async () => {
@@ -57,13 +59,22 @@ const General8 = () => {
         <table className="table table-borderless">
           <tbody>
             {projectUser.map((project) => (
-              <div key={project.id}>
-                <p className="text-dark font-size-48 font-weight-bold mb-2">
-                  {project.projects.name}
-                </p>
-                <p className="text-uppercase text-muted mb-3">{project.projects.status}</p>
-                <p className="mb-4">{project.projects.description}</p>
-                <a className="btn btn-outline-primary">Ver projeto</a>
+              <div className="card">
+                <div className="card-body">
+                  <div key={project.id}>
+                    <p className="text-dark font-size-48 font-weight-bold mb-2">
+                      {project.projects.name}
+                    </p>
+                    <p className="text-uppercase text-muted mb-3">{project.projects.status}</p>
+                    <p className="mb-4">{project.projects.description}</p>
+                    <Button
+                      className="btn btn-outline-primary"
+                      onClick={() => history.push(`/projects/details/${project.projectId}`)}
+                    >
+                      Ver projeto{' '}
+                    </Button>
+                  </div>
+                </div>
               </div>
             ))}
           </tbody>

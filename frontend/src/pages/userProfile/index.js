@@ -27,11 +27,7 @@ const UserProfile = () => {
         </div>
         <div className="col-lg-4 col-md-12">
           <div>
-            <div className="card">
-              <div className="card-body">
-                <WidgetsGeneral8 />
-              </div>
-            </div>
+            <WidgetsGeneral8 />
           </div>
         </div>
       </div>
