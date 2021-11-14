@@ -2,7 +2,7 @@ import React from 'react'
 import { Pagination } from 'antd'
 
 const PaginationComponent = () => {
-  return <Pagination showSizeChanger defaultCurrent={3} total={500} />
+  return <Pagination showSizeChanger defaultCurrent={1} total={50} />
 }
 
 export default PaginationComponent
