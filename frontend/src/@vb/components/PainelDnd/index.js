@@ -95,9 +95,9 @@ function PainelDnd() {
 
   return leads ? (
     <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
-      <div className="col-md-3">
+      <div className="col-md-1">
         <Button className="btn btn-primary btn-block" onClick={(e) => newLead(e)}>
-          Adicionar Card (+)
+          New (+)
         </Button>
       </div>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
@@ -123,7 +123,7 @@ function PainelDnd() {
                           background: snapshot.isDraggingOver ? '' : '',
                           padding: 4,
                           width: 300,
-                          minHeight: 500,
+                          minHeight: 300,
                         }}
                       >
                         {column.items.map((item, index) => {
