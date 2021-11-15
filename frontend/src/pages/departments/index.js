@@ -7,7 +7,7 @@ import TablesAntd3 from '@vb/widgets/TablesAntd/listDepartments'
 const Departments = () => {
   return (
     <div>
-      <Helmet title="Ant Design" />
+      <Helmet title="Departamentos" />
       <div className="row">
         <div className="col-lg-12">
           <div className="card-placeholder">

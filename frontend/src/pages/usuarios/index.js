@@ -22,7 +22,7 @@ const Users = () => {
 
   return profileId === 1 ? (
     <div>
-      <Helmet title="Ant Design" />
+      <Helmet title="Usuários" />
       <div className="row">
         <div className="col-lg-12">
           <div className="card-placeholder">

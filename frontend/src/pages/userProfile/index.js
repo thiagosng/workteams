@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 // import HeadersHeading3 from '@vb/widgets/Headers/Heading3'
 // import HeadersCardHeader from '@vb/widgets/Headers/CardHeader'
 // import TablesAntd3 from '@vb/widgets/TablesAntd/listaUsuarios'
@@ -10,6 +10,7 @@ import WidgetsGeneral8 from '@vb/widgets/WidgetsGeneral/8'
 const UserProfile = () => {
   return (
     <div>
+      <Helmet title="Perfil do Usuário" />
       <div className="card">
         <div className="card-body">
           <WidgetsGeneral />

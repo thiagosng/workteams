@@ -5,7 +5,7 @@ import FormsAddPost from '@vb/widgets/Forms/FormAddPost'
 const CreatePost = () => {
   return (
     <div>
-      <Helmet title="New Post" />
+      <Helmet title="Novo post" />
       <div className="row">
         <div className="col-lg-12">
           <div className="card">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import HeadersCardHeader from '@vb/widgets/Headers/CardHeaderRegister'
 import Forms3 from '@vb/widgets/Forms/formProjects'
 import { useParams } from 'react-router-dom'
@@ -8,6 +9,7 @@ const ProjectsRegister = () => {
 
   return (
     <div className="card">
+      <Helmet title={id ? 'Editar projeto' : 'Novo projeto'} />
       <div className="card-header">
         <HeadersCardHeader
           data={{
