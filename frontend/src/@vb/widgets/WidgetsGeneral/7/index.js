@@ -33,12 +33,7 @@ const General7 = () => {
           <div className="text-dark font-size-18 font-weight-bold text-nowrap">
             Minhas Informações
           </div>
-          <div className="text-uppercase">Support team</div>
         </div>
-      </div>
-      <div className="mb-3">
-        <a className="btn btn-outline-primary mr-2">Chat</a>
-        <a className="btn btn-outline-danger">Unfollow</a>
       </div>
       <div className="table-responsive">
         <table className="table table-borderless">
