@@ -62,16 +62,16 @@ class PostsService {
       content,
     });
 
-    await postsRepository.update(content!, updatePosts);
+    await postsRepository.update(id!, updatePosts);
     return updatePosts;
   }
 
   // delete accounts
-  async delete({ id, content }: IPostsRequest) {
+  async delete({ id }: IPostsRequest) {
     const postsRepository = getCustomRepository(PostsRepository);
 
     const postAlreadyExist = await postsRepository.findOne({
-      content,
+      id,
     });
 
     if (!postAlreadyExist) {
