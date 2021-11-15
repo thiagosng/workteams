@@ -18,6 +18,11 @@ const routes = [
     Component: lazy(() => import('pages/postsCreate')),
     exact: true,
   },
+  {
+    path: '/posts/update/:id',
+    Component: lazy(() => import('pages/postsCreate')),
+    exact: true,
+  },
   // ROTAS DE USUÁRIOS
   {
     path: '/users',
