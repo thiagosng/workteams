@@ -16,12 +16,18 @@ projectsRouter.get('/', async (request, response) => {
 projectsRouter.get('/:id', async (request, response) => {
   const projectsRepository = getCustomRepository(ProjectsRepository);
   const projects = await projectsRepository.findOne(request.params.id);
-
+  
+  if(projects === undefined){
+    throw new Error('Projeto não existe');
+  }
+  
   return response.json(projects);
 });
 
+// arrumar corpo da requisição para não aceitar definação de active
+
 projectsRouter.post('/create', async (request, response) => {
-  const { name, description, startDate, endDate, duration, status, active } =
+  const { name, description, startDate, endDate, duration, status, active = false } =
     request.body;
 
   const createProjectsService = new ProjectsService();
