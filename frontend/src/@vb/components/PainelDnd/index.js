@@ -1,9 +1,8 @@
 /* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import { Button } from 'antd'
-import { useHistory } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import FormAddTodo from '../../widgets/Forms/FormAddTodo'
 
 const itemsFromBackend = [
   { id: uuid(), content: 'First task' },
@@ -68,18 +67,14 @@ const onDragEnd = (result, columns, setColumns) => {
 function PainelDnd() {
   const [columns, setColumns] = useState(columnsFromBackend)
   const [leads, setLeads] = useState([])
-  const history = useHistory()
-
-  const newLead = () => {
-    history.push('/new-lead')
-  }
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLeads(JSON.parse(localStorage.getItem('lead')))
     setColumns([
       {
         name: 'To Do',
-        items: itemsFromBackend,
+        items: JSON.parse(localStorage.getItem('lead')),
       },
       {
         name: 'In Progress',
@@ -90,15 +85,14 @@ function PainelDnd() {
         items: [],
       },
     ])
+    setLoading(true)
     localStorage.setItem('columns', columns)
-  }, [])
+  }, [loading])
 
   return leads ? (
     <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
-      <div className="col-md-1">
-        <Button className="btn btn-primary btn-block" onClick={(e) => newLead(e)}>
-          New (+)
-        </Button>
+      <div className="col-md-2">
+        <FormAddTodo />
       </div>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
         {Object.entries(columns).map(([columnId, column]) => {
@@ -146,6 +140,8 @@ function PainelDnd() {
                                     }}
                                   >
                                     {item.content}
+                                    <br />
+                                    Criado por {item.name}
                                   </div>
                                 )
                               }}
@@ -167,9 +163,7 @@ function PainelDnd() {
     <div>
       <h1>Nenhum lead cadastrado...</h1>
       <span>
-        <Button className="btn btn-primary btn-block" onClick={(e) => newLead(e)}>
-          Adicionar Card (+)
-        </Button>
+        <FormAddTodo />
       </span>
     </div>
   )
