@@ -43,9 +43,9 @@ const ProjectsList = () => {
 
   function showDeleteConfirm() {
     Modal.confirm({
-      title: 'Você deseja mesmo deletar esse cliente ?',
+      title: 'Você deseja mesmo deletar esse projeto ?',
       icon: <ExclamationCircleOutlined />,
-      content: 'O cliente será deletado de forma permanente',
+      content: 'O projeto será deletado de forma permanente',
       okText: 'Deletar',
       okType: 'danger',
       cancelText: 'Cancelar',

@@ -14,10 +14,10 @@ import Footer from '@vb/components/Footer'
 import Footer2 from '@vb/components/Footer2'
 import Footer3 from '@vb/components/Footer3'
 import Footer4 from '@vb/components/Footer4'
-import Sidebar from '@vb/components/Sidebar'
+// import Sidebar from '@vb/components/Sidebar'
 // import SupportChat from '@vb/components/SupportChat'
 import Variants from '@vb/components/Variants'
-import Tutorial from '@vb/components/Tutorial'
+// import Tutorial from '@vb/components/Tutorial'
 
 const mapStateToProps = ({ settings }) => ({
   isMobileMenuOpen: settings.isMobileMenuOpen,
@@ -123,9 +123,9 @@ const MainLayout = ({
           vb__layout__borderless: isBorderless,
         })}
       >
-        <Tutorial />
+        {/* <Tutorial /> */}
         <Variants />
-        <Sidebar />
+        {/* <Sidebar /> */}
         {/* <SupportChat /> */}
         {layoutMenu === 'classic' && <MenuClassic />}
         {layoutMenu === 'flyout' && <MenuFlyout />}

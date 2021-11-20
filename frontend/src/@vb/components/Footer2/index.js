@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import style from './style.module.scss'
-// import logoAdasi from '../../../../public/resources/images/content/flowers-pieces/logo-adasi.png'
 
 const mapStateToProps = ({ settings }) => ({ settings })
 

@@ -34,9 +34,9 @@ const WpPostShort = () => {
 
     function showDeleteConfirm() {
       Modal.confirm({
-        title: 'Você deseja mesmo deletar esse usuário ?',
+        title: 'Você deseja mesmo deletar essa postagem?',
         icon: <ExclamationCircleOutlined />,
-        content: 'O usuário será deletado de forma permanente',
+        content: 'A postagem será deletada de forma permanente',
         okText: 'Deletar',
         okType: 'danger',
         cancelText: 'Cancelar',

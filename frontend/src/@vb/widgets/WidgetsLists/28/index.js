@@ -15,7 +15,7 @@ const List28 = () => {
         (+) Criar Post
       </Button>
       <br />
-      <div className="pb-4 mb-3 border-bottom">
+      {/* <div className="pb-4 mb-3 border-bottom">
         <label className="font-weight-bold d-block" htmlFor="search-input">
           <span className="mb-2 d-inline-block">Search Post</span>
           <input
@@ -25,8 +25,8 @@ const List28 = () => {
             id="search-input"
           />
         </label>
-      </div>
-      <div className="pb-4 border-bottom">
+      </div> */}
+      {/* <div className="pb-4 border-bottom">
         <div className="font-weight-bold mb-2">Categories</div>
         <div>
           <a
@@ -51,7 +51,7 @@ const List28 = () => {
             Umijs
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

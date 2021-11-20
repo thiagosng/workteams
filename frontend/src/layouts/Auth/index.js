@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-import Sidebar from '@vb/components/Sidebar'
+// import Sidebar from '@vb/components/Sidebar'
 import style from './style.module.scss'
 
 const mapStateToProps = ({ settings }) => ({
@@ -27,7 +27,7 @@ const AuthLayout = ({
   return (
     <Layout className="vb__layout">
       <Layout.Content>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <div
           className={classNames(`${style.container}`, {
             vb__layout__squaredBorders: isSquaredBorders,
