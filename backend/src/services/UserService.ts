@@ -4,6 +4,7 @@ import { sign } from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 import nodemailer from 'nodemailer';
 import UsersRepository from '../repositories/UsersRepository';
+const SMTP_CONFIG = require('./senha')
 
 interface IUserRequest {
   id?: number;
@@ -191,12 +192,13 @@ class UserService {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findOne({
-      email,
+      email
     });
 
     if (!user) {
       throw new Error('Email invalido');
     }
+    //passando aqui de boa
 
     const code = uuid();
     const date = new Date();
@@ -205,26 +207,27 @@ class UserService {
     await usersRepository.update(user.id, { forgottenPasswordTime: date });
 
     const transport = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
+      host: SMTP_CONFIG.host,
+      port: SMTP_CONFIG.port,
       secure: false,
       auth: {
-        user: '', // user
-        pass: '', // password
+        user: SMTP_CONFIG.user, // user
+        pass: SMTP_CONFIG.pass, // password
       },
       tls: {
         rejectUnauthorized: false,
       },
     });
-
+    // passo aqui tambem
+    
+    console.log(transport);
     const info = await transport.sendMail({
-      from: '"Fred Foo 👻" <foo@example.com>', // sender address
-      to: 'lucasmeyble123@gmail.com', // list of receivers
+      from: '"Fred Foo 👻" <jhinyhas@gmail.com', // sender address
+      to: 'jhinyhas@gmail.com', // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world?', // plain text body
-      html: `<b>Hello world?</b> <br> <a href="http://localhost:3333/users/forgottenPasswordSecondStage/${code}">teste</a>`, // html body
+      html: `<b>Hello world?</b> <br> <a href="http://localhost:3000/users/forgottenPasswordSecondStage/f1a371f2-a915-44e3-9ecf-eb1e75de69aa#/auth/forgot-password">teste</a>`, // html body
     });
-
     return info;
   }
 
