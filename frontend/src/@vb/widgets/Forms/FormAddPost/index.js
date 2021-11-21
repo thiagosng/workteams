@@ -135,7 +135,7 @@ const FormAddPost = ({ user }) => {
           <span className="btn-addon">
             <i className="btn-addon-icon fe fe-plus-circle" />
           </span>
-          Adicionar Post
+          Atualizar Post
         </button>
       </Form.Item>
     </Form>

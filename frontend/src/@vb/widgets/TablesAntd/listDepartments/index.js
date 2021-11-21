@@ -98,7 +98,7 @@ function TablesAntdCustomFilter() {
 
   function showDeleteConfirm(id) {
     Modal.confirm({
-      title: 'Você deseja mesmo deletar esse segmento ?',
+      title: 'Você deseja mesmo deletar esse departamento ?',
       icon: <ExclamationCircleOutlined />,
       content: 'O segmento será deletado de forma permanente',
       okText: 'Deletar',

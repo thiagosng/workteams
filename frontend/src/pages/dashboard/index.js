@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import AppPartialsWpPostShort from '@vb/widgets/AppPartials/WpPostShort'
 import WidgetsLists28 from '@vb/widgets/WidgetsLists/28'
-import WidgetsLists4 from '@vb/widgets/WidgetsLists/4'
+// import WidgetsLists4 from '@vb/widgets/WidgetsLists/4'
 
 const Dashboard = () => {
   return (
@@ -18,11 +18,11 @@ const Dashboard = () => {
               <WidgetsLists28 />
             </div>
           </div>
-          <div className="card-placeholder">
+          {/* <div className="card-placeholder">
             <div className="card-body mt-3">
               <WidgetsLists4 />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

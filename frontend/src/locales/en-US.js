@@ -12,7 +12,7 @@ const messages = {
   'topBar.profileMenu.role': 'Função',
   'topBar.profileMenu.email': 'Email',
   'topBar.profileMenu.phone': 'Fone',
-  'topBar.profileMenu.editProfile': 'Editar Perfil',
+  'topBar.profileMenu.editProfile': 'Meu Perfil',
   'topBar.profileMenu.logout': 'Sair',
 }
 
