@@ -5,7 +5,7 @@ import ForgotPassword from '@vb/components/Auth/ForgotPassword'
 const SystemForgotPassword = () => {
   return (
     <div>
-      <Helmet title="Forgot Password" />
+      <Helmet title="Esqueci minha senha" />
       <ForgotPassword />
     </div>
   )

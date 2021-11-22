@@ -137,13 +137,14 @@ usersRouter.post('/forgottenPassword', async (request, response) => {
   const userService = new UserService();
 
   const emailInfo = await userService.forgottenPassword({
-    email
+    email,
   });
 
   return response.json(emailInfo);
 });
 
-usersRouter.post('/forgottenPasswordSecondStage/:code',
+usersRouter.post(
+  '/forgottenPasswordSecondStage/:code',
   async (request, response) => {
     const { code } = request.params;
     const { newPassword } = request.body;

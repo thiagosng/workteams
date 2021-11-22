@@ -46,8 +46,14 @@ const ForgotPassword = () => {
           className="mb-4"
         >
           <Form.Item
-            name="email"
-            rules={[{ required: true, message: 'Por favor, insira o seu endereço de email' }]}
+            name="password"
+            rules={[{ required: true, message: 'Por favor, insira a sua nova senha' }]}
+          >
+            <Input placeholder="Endereço de Email" onChange={(e) => setEmail(e.target.value)} />
+          </Form.Item>
+          <Form.Item
+            name="repeat-password"
+            rules={[{ required: true, message: 'Por favor, insira novamente a sua nova senha' }]}
           >
             <Input placeholder="Endereço de Email" onChange={(e) => setEmail(e.target.value)} />
           </Form.Item>

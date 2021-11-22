@@ -25,6 +25,11 @@ export async function updateUser(id, data) {
   return response
 }
 
+export async function forgotPassword(email) {
+  const { data } = await apiClient.post('/users/forgottenPassword', { email })
+  return data
+}
+
 export default function clientServices() {
   return {
     getUsersData,
@@ -32,5 +37,6 @@ export default function clientServices() {
     createUser,
     deleteUser,
     updateUser,
+    forgotPassword,
   }
 }

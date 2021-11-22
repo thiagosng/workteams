@@ -4,7 +4,8 @@ import { sign } from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 import nodemailer from 'nodemailer';
 import UsersRepository from '../repositories/UsersRepository';
-const SMTP_CONFIG = require('./senha')
+
+const SMTP_CONFIG = require('./senha');
 
 interface IUserRequest {
   id?: number;
@@ -192,13 +193,13 @@ class UserService {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findOne({
-      email
+      email,
     });
 
     if (!user) {
       throw new Error('Email invalido');
     }
-    //passando aqui de boa
+    // passando aqui de boa
 
     const code = uuid();
     const date = new Date();
@@ -219,11 +220,11 @@ class UserService {
       },
     });
     // passo aqui tambem
-    
+
     console.log(transport);
     const info = await transport.sendMail({
-      from: '"Fred Foo 👻" <jhinyhas@gmail.com', // sender address
-      to: 'jhinyhas@gmail.com', // list of receivers
+      from: '"Fred Foo 👻" <thiagonunes026@gmail.com', // sender address
+      to: email, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world?', // plain text body
       html: `<b>Hello world?</b> <br> <a href="http://localhost:3000/users/forgottenPasswordSecondStage/f1a371f2-a915-44e3-9ecf-eb1e75de69aa#/auth/forgot-password">teste</a>`, // html body
