@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Modal, Button, notification } from 'antd'
 import { useParams } from 'react-router-dom'
 // import store from 'store'
@@ -12,6 +12,7 @@ const FormAddUsers = ({ user }) => {
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const { id } = useParams()
 
   console.log('id', id)
@@ -32,6 +33,7 @@ const FormAddUsers = ({ user }) => {
   const handleOk = () => {
     setIsModalVisible(false)
     openNotificationWithIcon('success')
+    setIsLoading(true)
     const oldLeads = localStorage.getItem('lead')
     if (oldLeads === null) {
       localStorage.setItem('lead', JSON.stringify([{ id: uuid(), name, content }]))
@@ -48,6 +50,10 @@ const FormAddUsers = ({ user }) => {
   const handleCancel = () => {
     setIsModalVisible(false)
   }
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [isLoading])
 
   return (
     <div>

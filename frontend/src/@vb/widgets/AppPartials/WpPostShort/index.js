@@ -103,7 +103,7 @@ const WpPostShort = () => {
               <a className="font-weight-bold" href="#" onClick={(e) => e.preventDefault()}>
                 {post.createdBy}
               </a>{' '}
-              em {moment(post.createdAt).format('YYYY-MM-DD 00:00:00')}
+              em {moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')}
             </div>
             <div>
               <p>{post.content}</p>

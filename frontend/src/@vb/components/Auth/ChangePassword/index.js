@@ -2,32 +2,33 @@ import React, { useState } from 'react'
 import { Input, Button, Form, notification } from 'antd'
 import { CheckCircleTwoTone } from '@ant-design/icons'
 import { Link, useHistory } from 'react-router-dom'
-import { forgotPassword } from 'services/usuarios'
+// import { forgotPassword } from 'services/usuarios'
 import style from '../style.module.scss'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const history = useHistory()
 
   const onFinish = (values) => {
     console.log('Success:', values)
+    console.log('email:', email)
+    console.log('password:', password)
+    console.log('confirmPassword:', confirmPassword)
   }
 
   const openNotification = () => {
     notification.open({
       message: 'Sucesso',
-      description: 'Um email foi enviado para você com instruções para recuperar sua senha',
+      description: 'Sua senha foi redefinida com sucesso',
       icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
     })
   }
 
-  const sendForgotPassword = async () => {
-    const response = await forgotPassword(email)
-    if (!response.error) {
-      openNotification()
-      history.push('/auth/login')
-    }
-    console.log(response)
+  const sendForgotPassword = () => {
+    openNotification()
+    history.push('/auth/login')
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -46,16 +47,30 @@ const ForgotPassword = () => {
           className="mb-4"
         >
           <Form.Item
+            name="email"
+            rules={[{ required: true, message: 'Por favor, Digite o seu email' }]}
+          >
+            <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+          </Form.Item>
+          <Form.Item
             name="password"
             rules={[{ required: true, message: 'Por favor, insira a sua nova senha' }]}
           >
-            <Input placeholder="Endereço de Email" onChange={(e) => setEmail(e.target.value)} />
+            <Input
+              type="password"
+              placeholder="Nova senha"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </Form.Item>
           <Form.Item
             name="repeat-password"
             rules={[{ required: true, message: 'Por favor, insira novamente a sua nova senha' }]}
           >
-            <Input placeholder="Endereço de Email" onChange={(e) => setEmail(e.target.value)} />
+            <Input
+              type="password"
+              placeholder="Repetir nova senha"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </Form.Item>
           <Button
             type="primary"
@@ -63,7 +78,7 @@ const ForgotPassword = () => {
             className="text-center w-100"
             onClick={sendForgotPassword}
           >
-            <strong>Enviar email</strong>
+            <strong>Alterar senha</strong>
           </Button>
         </Form>
         <Link to="/auth/login" className="vb__utils__link">

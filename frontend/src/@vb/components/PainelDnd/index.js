@@ -161,7 +161,7 @@ function PainelDnd() {
     </div>
   ) : (
     <div>
-      <h1>Nenhum lead cadastrado...</h1>
+      <h1>Nenhum card cadastrado...</h1>
       <span>
         <FormAddTodo />
       </span>

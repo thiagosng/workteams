@@ -227,7 +227,7 @@ class UserService {
       to: email, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world?', // plain text body
-      html: `<b>Hello world?</b> <br> <a href="http://localhost:3000/users/forgottenPasswordSecondStage/f1a371f2-a915-44e3-9ecf-eb1e75de69aa#/auth/forgot-password">teste</a>`, // html body
+      html: `<b>Hello world?</b> <br> <a href="http://localhost:3000/#/auth/change-password">Clique aqui para alterar sua senha</a>`, // html body
     });
     return info;
   }

@@ -6,24 +6,6 @@ import { useHistory } from 'react-router-dom'
 import moment from 'moment'
 import style from './style.module.scss'
 
-// const dropdownMenu = (
-//   <Menu>
-//     <Menu.Item>
-//       <a>Action</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a>Another action</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a>Something else here</a>
-//     </Menu.Item>
-//     <div className="dropdown-divider" />
-//     <Menu.Item>
-//       <a>Separated link</a>
-//     </Menu.Item>
-//   </Menu>
-// )
-
 const General13 = () => {
   const [projects, setProjects] = useState([])
 
@@ -72,18 +54,6 @@ const General13 = () => {
                   <div className="d-flex flex-column justify-content-center">
                     <h5 className="mb-0 text-white">{project.status}</h5>
                   </div>
-                  {/* <div className="ml-auto d-flex flex-column justify-content-center">
-                    <div className="dropdown d-inline-block">
-                      <Dropdown overlay={dropdownMenu} placement="bottomRight">
-                        <button
-                          type="button"
-                          className="btn btn-light dropdown-toggle dropdown-toggle-noarrow"
-                        >
-                          <i className="fe fe-more-horizontal" />
-                        </button>
-                      </Dropdown>
-                    </div>
-                  </div> */}
                 </div>
                 <div className="mt-auto mb-3">
                   <div className="text-white font-size-24 font-weight-bold pl-4">

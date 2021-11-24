@@ -15,12 +15,7 @@ const Footer = ({ settings: { isContentMaxWidth } }) => {
       <div className={style.inner}>
         <div className="row">
           <div className="col-md-8">
-            <a
-              href="https://google.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={style.logo}
-            >
+            <a href="http://localhost:3000/" rel="noopener noreferrer" className={style.logo}>
               WORKTEAMS
             </a>
             <br />

@@ -93,6 +93,11 @@ const routes = [
     exact: true,
   },
   {
+    path: '/auth/change-password',
+    Component: lazy(() => import('pages/auth/change-password')),
+    exact: true,
+  },
+  {
     path: '/auth/register',
     Component: lazy(() => import('pages/auth/register')),
     exact: true,
